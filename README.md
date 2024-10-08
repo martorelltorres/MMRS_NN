@@ -7,10 +7,7 @@ Installation procedure:
 3) pip install tensorflow
 4) pip install scikit-learn
 
-Then you must first, run the training process launching:
-5) python3 nn_train.py
-
-And finally perform the prediction running:
-6) python3 nn_prediction.py
+Then you must first, run the training process launching: python3 nn_train.py
+And finally perform the prediction running: python3 nn_prediction.py
 
 The final output is the most suitable aggregation function (OWA or ARTM) with their respective weights (w1,w2 or w3)
