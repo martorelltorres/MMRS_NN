@@ -10,4 +10,4 @@ Installation procedure:
 Then you must first, run the training process launching: python3 nn_train.py
 And finally perform the prediction running: python3 nn_prediction.py
 
-The final output is the most suitable aggregation function (OWA or ARTM) with their respective weights (w1,w2 or w3)
+The final output is the most suitable aggregation function (OWA or ARTM) with their respective weights (w1,w2,w3 or a,b respectively)
