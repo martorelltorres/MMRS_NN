@@ -1,36 +1,40 @@
 import numpy as np
+import pickle
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
 
-# Cargar el modelo entrenado
-model = tf.keras.models.load_model('mi_modelo.h5')
+# Load the trained model
+model = tf.keras.models.load_model('my_model.h5')
 
-# Nuevas entradas (ejemplo)
-# Definir las nuevas entradas (número de vehículos, densidad de objetos, superficie del área, peso de la información)
-nuevas_entradas = np.array([[12, 0.6, 110, 0.9]])  # Ejemplo con una nueva muestra
+# Load the saved scaler from the pickle file
+with open('scaler.pkl', 'rb') as f:
+    scaler = pickle.load(f)  # Ensure the scaler object is loaded correctly
 
-# Escalar las nuevas entradas utilizando el mismo escalador que usaste para los datos de entrenamiento
-scaler = StandardScaler()
-# Escalar las nuevas entradas
-nuevas_entradas_scaled = scaler.fit_transform(nuevas_entradas)
+# New inputs (example)
+nuevas_entradas = np.array([[12, 110, 0.9]])  # Example with one new sample
 
-# Realizar la predicción
+# Ensure the scaler is a StandardScaler 
+if isinstance(scaler, StandardScaler):
+    # Scale the new inputs using the loaded scaler
+    nuevas_entradas_scaled = scaler.transform(nuevas_entradas)  # Use transform on the loaded scaler
+else:
+    raise ValueError("Loaded object is not a StandardScaler!")
+
+# Perform the prediction
 predicciones = model.predict(nuevas_entradas_scaled)
 
-# Mostrar las predicciones
-print("Predicciones:", predicciones)
+# Display the predictions
+print("Predictions:", predicciones)
 
-# Extraer los valores
+# Extract the predicted values
 a, b, w1, w2, w3, ARTM, OWA = predicciones[0]
 
-# Comparar ART y OWA
+# Compare ARTM and OWA
 if ARTM > OWA:
-    # Si ART es mayor, mostrar a y b
+    # If ARTM is greater, display a and b
     resultado = (a, b)
-    # Mostrar el resultado
-    print("Resultado: ARTM con pesos", resultado)
+    print("Result: ARTM with weights", resultado)
 else:
-    # Si OWA es mayor, mostrar w1, w2, y w3
+    # If OWA is greater, display w1, w2, and w3
     resultado = (w1, w2, w3)
-    print("Resultado: OWA con pesos", resultado)
-
+    print("Result: OWA with weights", resultado)

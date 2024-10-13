@@ -4,16 +4,16 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import pickle
 
 # Create simulated data with 100 samples for each feature
 # Number of exploring vehicles, object density, exploration area size, information weight
 numero_vehiculos = np.random.randint(5, 20, size=(100,))  # 100 samples of number of vehicles
-densidad_objetos = np.random.uniform(0.3, 1.0, size=(100,))  # 100 samples of object density
 superficie_area = np.random.uniform(50, 300, size=(100,))  # 100 samples of exploration area size
 peso_informacion = np.random.uniform(0.5, 1.0, size=(100,))  # 100 samples of information weight
 
 # Combine these variables into a feature matrix (X) as input for the model
-X = np.column_stack((numero_vehiculos, densidad_objetos, superficie_area, peso_informacion))
+X = np.column_stack((numero_vehiculos, superficie_area, peso_informacion))
 
 # OUTPUTS
 # Define the number of samples
@@ -37,6 +37,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Scale the data (optional but recommended)
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
+
+with open('scaler.pkl', 'wb') as f:
+    pickle.dump(scaler, f)
+
+print("Scaler saved successfully!")
+
 X_test = scaler.transform(X_test)
 
 # Define the model
