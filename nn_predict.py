@@ -8,10 +8,10 @@ model = tf.keras.models.load_model('my_model.h5')
 
 # Load the saved scaler from the pickle file
 with open('scaler.pkl', 'rb') as f:
-    scaler = pickle.load(f)  # Ensure the scaler object is loaded correctly
+    scaler = pickle.load(f)  
 
-# New inputs (example)
-nuevas_entradas = np.array([[12, 110, 0.9]])  # Example with one new sample
+# New inputs to make the prediction
+nuevas_entradas = np.array([[12, 110, 0.9]])  
 
 # Ensure the scaler is a StandardScaler 
 if isinstance(scaler, StandardScaler):
@@ -21,13 +21,13 @@ else:
     raise ValueError("Loaded object is not a StandardScaler!")
 
 # Perform the prediction
-predicciones = model.predict(nuevas_entradas_scaled)
+predictions = model.predict(nuevas_entradas_scaled)
 
 # Display the predictions
-print("Predictions:", predicciones)
+print("Predictions:", predictions)
 
 # Extract the predicted values
-a, b, w1, w2, w3, ARTM, OWA = predicciones[0]
+a, b, w1, w2, w3, ARTM, OWA = predictions[0]
 
 # Compare ARTM and OWA
 if ARTM > OWA:
