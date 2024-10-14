@@ -6,19 +6,18 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import pickle
 
-# Create simulated data with 100 samples for each feature
-# Number of exploring vehicles, object density, exploration area size, information weight
-numero_vehiculos = np.random.randint(5, 20, size=(100,))  # 100 samples of number of vehicles
-superficie_area = np.random.uniform(50, 300, size=(100,))  # 100 samples of exploration area size
-peso_informacion = np.random.uniform(0.5, 1.0, size=(100,))  # 100 samples of information weight
-
-# Combine these variables into a feature matrix (X) as input for the model
-X = np.column_stack((numero_vehiculos, superficie_area, peso_informacion))
-
-# OUTPUTS
+# Create simulated data for each feature: Number of exploring vehicles, exploration area size
 # Define the number of samples
 num_samples = 100
 
+# ______________________ INPUTS _____________________________________
+numero_vehiculos = np.random.randint(2, 5, size=(num_samples,))  # 100 samples of number of vehicles
+superficie_area = np.random.uniform(10000, 50000, size=(num_samples,))  # 100 samples of exploration area size
+
+# Combine these variables into a feature matrix (X) as input for the model
+X = np.column_stack((numero_vehiculos, superficie_area))
+
+# _____________________ OUTPUTS ________________________________________
 # Simulate values for each parameter
 a = np.random.rand(num_samples)  # Values of 'a' between 0 and 1
 b = np.random.rand(num_samples)  # Values of 'b' between 0 and 1
@@ -64,18 +63,13 @@ model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolu
 model.summary()
 
 # Train the model
-history = model.fit(X_train, y_train, epochs=500, batch_size=32, validation_split=0.2)
+history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_split=0.2)
 
 # Evaluate performance on test data
 test_loss, test_mae = model.evaluate(X_test, y_test)
-# print(f"Mean Absolute Error on test data: {test_mae}")
 
 # Predictions on the test set
 y_pred = model.predict(X_test)
-
-# Compare predictions with actual labels (optional)
-# print("Predictions:", y_pred)
-# print("Actual values:", y_test)
 
 # Save the model
 model.save('my_model.h5')

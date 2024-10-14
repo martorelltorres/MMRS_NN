@@ -11,7 +11,7 @@ with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)  
 
 # New inputs to make the prediction
-nuevas_entradas = np.array([[12, 110, 0.9]])  
+nuevas_entradas = np.array([[4, 20000]])  
 
 # Ensure the scaler is a StandardScaler 
 if isinstance(scaler, StandardScaler):
