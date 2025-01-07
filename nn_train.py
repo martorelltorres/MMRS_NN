@@ -1,75 +1,109 @@
+#!/usr/bin/env python3
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau  # Import EarlyStopping
+from tensorflow.keras.regularizers import l2  # Import L2 regularizer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import pickle
+import matplotlib.pyplot as plt
+from tensorflow.keras.optimizers import Adam, RMSprop, Nadam, SGD
 
-# Create simulated data for each feature: Number of exploring vehicles, exploration area size
-# Define the number of samples
-num_samples = 100
+df = pd.read_csv('/home/uib/MRS_data/NN/consolidated_data.csv')  
 
-# ______________________ INPUTS _____________________________________
-numero_vehiculos = np.random.randint(2, 5, size=(num_samples,))  # 100 samples of number of vehicles
-superficie_area = np.random.uniform(10000, 50000, size=(num_samples,))  # 100 samples of exploration area size
+X = df[['auv_count', 'area']].values  
 
-# Combine these variables into a feature matrix (X) as input for the model
-X = np.column_stack((numero_vehiculos, superficie_area))
+y = df[['w1', 'w2', 'w3', 'a', 'b', 'owa_utility','artm_utility']].values  
 
-# _____________________ OUTPUTS ________________________________________
-# Simulate values for each parameter
-a = np.random.rand(num_samples)  # Values of 'a' between 0 and 1
-b = np.random.rand(num_samples)  # Values of 'b' between 0 and 1
-w1 = np.random.rand(num_samples)  # Values of 'w1' between 0 and 1
-w2 = np.random.rand(num_samples)  # Values of 'w2' between 0 and 1
-w3 = np.random.rand(num_samples)  # Values of 'w3' between 0 and 1
-ARTM = np.random.rand(num_samples)  # Values of 'ARTM' between 0 and 1
-OWA = np.random.rand(num_samples)  # Values of 'OWA' between 0 and 1
-
-# Combine all outputs into a single array for training
-y = np.column_stack((a, b, w1, w2, w3, ARTM, OWA))
-
-# Split the data into training and test sets
+# Dividir los datos en conjunto de entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train = X_train.astype(np.float32)
+y_train = y_train.astype(np.float32)
 
-# Scale the data (optional but recommended)
+# Escalar los datos (opcional pero recomendado)
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 
 with open('scaler.pkl', 'wb') as f:
     pickle.dump(scaler, f)
 
-print("Scaler saved successfully!")
-
 X_test = scaler.transform(X_test)
 
-# Define the model
+# Definir el modelo
 model = Sequential()
 
-# Input layer and one hidden layer with 64 neurons
-model.add(Dense(64, activation='relu', input_shape=(X_train.shape[1],)))
+# Capa de entrada y una capa oculta con 128 neuronas y regularización L2
+model.add(Dense(128, activation='relu', input_shape=(X_train.shape[1],), kernel_regularizer=l2(0.01)))  # L2 regularization
+# model.add(Dropout(0.1))  # Add Dropout layer (20% dropout)
 
-# Another hidden layer
-model.add(Dense(32, activation='relu'))
+# Otra capa oculta con 32 neuronas y regularización L2
+model.add(Dense(32, activation='relu', kernel_regularizer=l2(0.01)))  # L2 regularization
+# model.add(Dropout(0.1))  # Add Dropout layer (20% dropout)
 
-# Output layer with as many neurons as parameters you want to predict
-model.add(Dense(y_train.shape[1], activation='linear'))  # 'linear' for regression
+# Capa de salida con tantos neuronas como parámetros se quieren predecir, con regularización L2
+model.add(Dense(y_train.shape[1], activation='linear', kernel_regularizer=l2(0.01)))  # L2 regularization
 
-# Compile the model
-model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
+# Compile the model with an optimizer and initial learning rate
+optimizer = Adam(learning_rate=0.001) 
+model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error'])
 
-# Model summary
+# optimizer = Nadam(learning_rate=0.001)
+# model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error'])
+
+# optimizer = RMSprop(learning_rate=0.001)
+# model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error'])
+
+# optimizer = SGD(learning_rate=0.001)
+# model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error'])
+
+
+# Resumen del modelo
 model.summary()
 
-# Train the model
-history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_split=0.2)
+# Define the EarlyStopping callback
+early_stopping = EarlyStopping(monitor='val_loss',  # Monitor validation loss
+                               patience=20,        # Number of epochs with no improvement before stopping
+                               restore_best_weights=True)  # Restore the best weights when stopping
 
-# Evaluate performance on test data
+# Define the ReduceLROnPlateau callback to adjust the learning rate when validation loss stops improving
+lr_scheduler = ReduceLROnPlateau(monitor='val_loss', 
+                                  factor=0.5,        # Reduce the learning rate by a factor of 0.5
+                                  patience=5,        # Wait for 5 epochs without improvement before reducing
+                                  min_lr=1e-6)       # Set a minimum learning rate to avoid getting too small
+
+# Entrenar el modelo con las callbacks
+history = model.fit(X_train, y_train, epochs=500, batch_size=64, validation_split=0.1, 
+                    callbacks=[early_stopping, lr_scheduler])
+
+# Evaluar el rendimiento en los datos de prueba
 test_loss, test_mae = model.evaluate(X_test, y_test)
 
-# Predictions on the test set
+# Predicciones sobre el conjunto de prueba
 y_pred = model.predict(X_test)
 
-# Save the model
+# Guardar el modelo
 model.save('my_model.h5')
+
+# Get the training and validation loss and metrics
+history_dict = history.history
+
+# Plot training and validation loss
+plt.plot(history_dict['loss'], label='Training Loss')
+plt.plot(history_dict['val_loss'], label='Validation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.title('Training and Validation Loss')
+plt.show()
+
+# Plot training and validation mean absolute error
+plt.plot(history_dict['mean_absolute_error'], label='Training MAE')
+plt.plot(history_dict['val_mean_absolute_error'], label='Validation MAE')
+plt.xlabel('Epochs')
+plt.ylabel('Mean Absolute Error')
+plt.legend()
+plt.title('Training and Validation MAE')
+plt.show()
