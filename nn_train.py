@@ -46,9 +46,11 @@ model.add(Dense(32, activation='relu', kernel_regularizer=l2(0.01)))  # L2 regul
 # Capa de salida con tantos neuronas como parámetros se quieren predecir, con regularización L2
 model.add(Dense(y_train.shape[1], activation='linear', kernel_regularizer=l2(0.01)))  # L2 regularization
 
-# Compile the model with an optimizer and initial learning rate
+# OPTIMIZERS
 optimizer = Adam(learning_rate=0.001) 
-model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error'])
+model.compile(optimizer=optimizer, 
+              loss='mean_squared_error', 
+              metrics=['mean_absolute_error', 'mean_squared_error'])
 
 # optimizer = Nadam(learning_rate=0.001)
 # model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error'])
@@ -64,24 +66,35 @@ model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_abs
 model.summary()
 
 # Define the EarlyStopping callback
-early_stopping = EarlyStopping(monitor='val_loss',  # Monitor validation loss
-                               patience=20,        # Number of epochs with no improvement before stopping
-                               restore_best_weights=True)  # Restore the best weights when stopping
+early_stopping = EarlyStopping(
+    monitor='val_loss',  # Monitor validation loss
+    patience=20,         # Number of epochs without improvement before stopping
+    restore_best_weights=True,  # Restore the best weights when stopping
+    verbose=1            # Print stopping messages
+)
 
-# Define the ReduceLROnPlateau callback to adjust the learning rate when validation loss stops improving
-lr_scheduler = ReduceLROnPlateau(monitor='val_loss', 
-                                  factor=0.5,        # Reduce the learning rate by a factor of 0.5
-                                  patience=5,        # Wait for 5 epochs without improvement before reducing
-                                  min_lr=1e-6)       # Set a minimum learning rate to avoid getting too small
+# Define the ReduceLROnPlateau callback
+lr_scheduler = ReduceLROnPlateau(
+    monitor='val_loss',
+    factor=0.5,        # Reduce learning rate by a factor of 0.5
+    patience=5,        # Wait for 5 epochs without improvement before reducing
+    min_lr=1e-6,       # Minimum learning rate to avoid going too small
+    verbose=1          # Print learning rate adjustments
+)
 
-# Entrenar el modelo con las callbacks
-history = model.fit(X_train, y_train, epochs=500, batch_size=64, validation_split=0.1, 
-                    callbacks=[early_stopping, lr_scheduler])
+# Train the model
+history = model.fit(
+    X_train, y_train,
+    epochs=500,
+    batch_size=128,
+    validation_split=0.2,
+    callbacks=[early_stopping, lr_scheduler]
+)
 
-# Evaluar el rendimiento en los datos de prueba
-test_loss, test_mae = model.evaluate(X_test, y_test)
+# Evaluate the model on the test set
+test_loss, test_mae, test_mse = model.evaluate(X_test, y_test, verbose=1)
 
-# Predicciones sobre el conjunto de prueba
+# Predictions
 y_pred = model.predict(X_test)
 
 # Guardar el modelo
@@ -106,4 +119,13 @@ plt.xlabel('Epochs')
 plt.ylabel('Mean Absolute Error')
 plt.legend()
 plt.title('Training and Validation MAE')
+plt.show()
+
+# Plot training and validation mean absolute error
+plt.plot(history_dict['mean_squared_error'], label='Training MSE')
+plt.plot(history_dict['val_mean_squared_error'], label='Validation MSE')
+plt.xlabel('Epochs')
+plt.ylabel('Mean Squared Error')
+plt.legend()
+plt.title('Training and Validation Mean Squared Error')
 plt.show()
