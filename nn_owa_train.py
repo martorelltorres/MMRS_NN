@@ -12,11 +12,11 @@ import pickle
 import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import Adam, RMSprop, Nadam, SGD
 
-df = pd.read_csv('/home/uib/MRS_data/NN/consolidated_data.csv')  
+df = pd.read_csv('/home/uib/MRS_data/simulation_data/owa_data.csv')  
 
 X = df[['auv_count', 'area']].values  
 
-y = df[['w1', 'w2', 'w3', 'a', 'b', 'owa_utility','artm_utility']].values  
+y = df[['w1', 'w2', 'w3', 'utility']].values  
 
 # Dividir los datos en conjunto de entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -98,7 +98,7 @@ test_loss, test_mae, test_mse = model.evaluate(X_test, y_test, verbose=1)
 y_pred = model.predict(X_test)
 
 # Guardar el modelo
-model.save('my_model.h5')
+model.save('owa_model.keras')
 
 # Get the training and validation loss and metrics
 history_dict = history.history
