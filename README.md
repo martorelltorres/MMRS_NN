@@ -8,6 +8,8 @@ Installation procedure:
 4) pip install tensorflow
 5) pip install scikit-learn
 6) pip install numpy
+7) pip install matplotlib
+8) pip install pandas
 
 Then you must first, run the training process launching: python3 nn_train.py
 And finally perform the prediction running: python3 nn_prediction.py
