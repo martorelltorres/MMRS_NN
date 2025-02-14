@@ -5,11 +5,7 @@ Installation procedure:
 1) sudo apt install python3-virtualenv  or pip3 install virtualenv
 2) virtualenv env
 3) source env/bin/activate
-4) pip install tensorflow
-5) pip install scikit-learn
-6) pip install numpy
-7) pip install matplotlib
-8) pip install pandas
+4) pip install tensorflow scikit-learn numpy matplotlib pandas
 
 Then you must first, run the training process launching: python3 nn_train.py
 And finally perform the prediction running: python3 nn_prediction.py
