@@ -12,12 +12,12 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import Adam
 
 # Load training data
-train_df = pd.read_csv('/home/uib/MMRS_NN/data/may/owa_data_train.csv')  
+train_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility/owa_data_train.csv')  
 input_train = train_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values  
 output_train = train_df[['utility']].values  
 
 # Load evaluation data
-test_df = pd.read_csv('/home/uib/MMRS_NN/data/may/owa_data_test.csv')  
+test_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility/owa_data_test.csv')  
 input_test = test_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values  
 output_test = test_df[['utility']].values  
 
@@ -32,15 +32,20 @@ scaler = StandardScaler()
 input_train = scaler.fit_transform(input_train)
 input_test = scaler.transform(input_test)
 
-# Save the scaler for future use
+# Scale the outputs as well
+scaler_y = StandardScaler()
+output_train = scaler_y.fit_transform(output_train)
+output_test = scaler_y.transform(output_test)
+
+# Save both scalers
 with open('owa_scaler.pkl', 'wb') as f:
-    pickle.dump(scaler, f)
+    pickle.dump((scaler, scaler_y), f)  # Save input and output scalers
 
 # Define the model
 model = Sequential([
-    Dense(128, activation='relu', input_shape=(input_train.shape[1],), kernel_regularizer=l2(0.01)),
+    Dense(64, activation='relu', input_shape=(input_train.shape[1],), kernel_regularizer=l2(0.01)),
     Dense(32, activation='relu', kernel_regularizer=l2(0.01)),
-    Dense(output_train.shape[1], activation='linear', kernel_regularizer=l2(0.01))
+    Dense(output_train.shape[1], activation='exponential', kernel_regularizer=l2(0.01))
 ])
 
 # Compile the model
