@@ -12,25 +12,25 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import Adam
 
 # Load training data
-train_df = pd.read_csv('/home/uib/MMRS_NN/data/utility_function/owa_train_data.csv')  
-X_train = train_df[['auv_count', 'area']].values  
-y_train = train_df[['w1', 'w2', 'w3', 'utility']].values  
+train_df = pd.read_csv('/home/uib/MMRS_NN/data/may/owa_data_train.csv')  
+input_train = train_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values  
+output_train = train_df[['utility']].values  
 
 # Load evaluation data
-test_df = pd.read_csv('/home/uib/MMRS_NN/data/utility_function/owa_test_data.csv')  
-X_test = test_df[['auv_count', 'area']].values  
-y_test = test_df[['w1', 'w2', 'w3', 'utility']].values  
+test_df = pd.read_csv('/home/uib/MMRS_NN/data/may/owa_data_test.csv')  
+input_test = test_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values  
+output_test = test_df[['utility']].values  
 
 # Convert data types for TensorFlow compatibility
-X_train = X_train.astype(np.float32)
-y_train = y_train.astype(np.float32)
-X_test = X_test.astype(np.float32)
-y_test = y_test.astype(np.float32)
+input_train = input_train.astype(np.float32)
+output_train = output_train.astype(np.float32)
+input_test = input_test.astype(np.float32)
+output_test = output_test.astype(np.float32)
 
 # Scale the input features
 scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+input_train = scaler.fit_transform(input_train)
+input_test = scaler.transform(input_test)
 
 # Save the scaler for future use
 with open('owa_scaler.pkl', 'wb') as f:
@@ -38,9 +38,9 @@ with open('owa_scaler.pkl', 'wb') as f:
 
 # Define the model
 model = Sequential([
-    Dense(128, activation='relu', input_shape=(X_train.shape[1],), kernel_regularizer=l2(0.01)),
+    Dense(128, activation='relu', input_shape=(input_train.shape[1],), kernel_regularizer=l2(0.01)),
     Dense(32, activation='relu', kernel_regularizer=l2(0.01)),
-    Dense(y_train.shape[1], activation='linear', kernel_regularizer=l2(0.01))
+    Dense(output_train.shape[1], activation='linear', kernel_regularizer=l2(0.01))
 ])
 
 # Compile the model
@@ -56,7 +56,7 @@ lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min
 
 # Train the model
 history = model.fit(
-    X_train, y_train,
+    input_train, output_train,
     epochs=500,
     batch_size=128,
     validation_split=0.2,
@@ -64,7 +64,7 @@ history = model.fit(
 )
 
 # Evaluate the model on the test set
-test_loss, test_mae, test_mse = model.evaluate(X_test, y_test, verbose=1)
+test_loss, test_mae, test_mse = model.evaluate(input_test, output_test, verbose=1)
 
 # Save the trained model
 model.save('owa_model.keras')

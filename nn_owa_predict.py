@@ -3,10 +3,14 @@ import pickle
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
 
-# Load the trained model
-model = tf.keras.models.load_model('owa_model.keras')
+# Define custom loss function if needed
+def custom_loss(y_true, y_pred):
+    return tf.keras.losses.mean_squared_error(y_true, y_pred)
 
-# Load the saved scaler from the pickle file
+# Load the trained model
+model = tf.keras.models.load_model('owa_model.keras', custom_objects={'custom_loss': custom_loss})
+
+# Load the saved scalers from the pickle file
 with open('owa_scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
@@ -24,11 +28,14 @@ else:
     raise ValueError("Loaded object is not a StandardScaler!")
 
 # Perform the prediction
-predictions = model.predict(nuevas_entradas_scaled)
+predictions_scaled = model.predict(nuevas_entradas_scaled)
+
+# Inverse transform the predictions
+predictions = scaler.inverse_transform(predictions_scaled)
 
 # Expecting the model to output 4 values: [w1, w2, w3, utility]
-if predictions.shape[1] != 4:
-    raise ValueError("Expected the model to output 4 values (w1, w2, w3, utility).")
+# if predictions.shape[1] != 4:
+#     raise ValueError("Expected the model to output 4 values (w1, w2, w3, utility).")
 
 # Unpack the predictions
 w1, w2, w3, utility = predictions[0]
@@ -46,4 +53,3 @@ print("w1 =", w1)
 print("w2 =", w2)
 print("w3 =", w3)
 print("Utility =", utility)
-

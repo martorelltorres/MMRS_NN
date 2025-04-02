@@ -12,12 +12,12 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import Adam
 
 # Load training data
-train_df = pd.read_csv('/home/uib/MMRS_NN/data/utility_function/artm_train_data.csv')  
+train_df = pd.read_csv('/home/uib/MMRS_NN/data/may/artm_data_train.csv')  
 X_train = train_df[['auv_count', 'area']].values  
 y_train = train_df[['a', 'b','utility']].values  
 
 # Load evaluation data
-test_df = pd.read_csv('/home/uib/MMRS_NN/data/utility_function/artm_test_data.csv')  
+test_df = pd.read_csv('/home/uib/MMRS_NN/data/may/artm_data_test.csv')  
 X_test = test_df[['auv_count', 'area']].values  
 y_test = test_df[['a', 'b','utility']].values  
 
