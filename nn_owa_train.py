@@ -1,102 +1,96 @@
-#!/usr/bin/env python3
 import numpy as np
 import pandas as pd
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tensorflow.keras.regularizers import l2
-from sklearn.preprocessing import StandardScaler
-import pickle
-import matplotlib.pyplot as plt
-from tensorflow.keras.optimizers import Adam
+from itertools import product
+from sklearn.tree import DecisionTreeRegressor
+from sklearn import svm
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import RBF
+from sklearn import neighbors
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
 
 # Load training data
-train_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility/owa_data_train.csv')  
-input_train = train_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values  
-output_train = train_df[['utility']].values  
+train_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility_function/all_owa_data.csv')
+input_data = train_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values
+output_data = train_df[['utility']].values
 
-# Load evaluation data
-test_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility/owa_data_test.csv')  
-input_test = test_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values  
-output_test = test_df[['utility']].values  
+dtree = DecisionTreeRegressor(max_depth=5)
+dtree.fit(input_data, output_data)
 
-# Convert data types for TensorFlow compatibility
-input_train = input_train.astype(np.float32)
-output_train = output_train.astype(np.float32)
-input_test = input_test.astype(np.float32)
-output_test = output_test.astype(np.float32)
+randf = RandomForestRegressor(n_estimators=1000)
+randf.fit(input_data, output_data)
 
-# Scale the input features
-scaler = StandardScaler()
-input_train = scaler.fit_transform(input_train)
-input_test = scaler.transform(input_test)
+svr = svm.SVR( kernel='rbf', C=1.0, epsilon=0.1)
+svr.fit(input_data, output_data)
 
-# Scale the outputs as well
-scaler_y = StandardScaler()
-output_train = scaler_y.fit_transform(output_train)
-output_test = scaler_y.transform(output_test)
+knn = neighbors.KNeighborsRegressor(n_neighbors=5)  
+knn.fit(input_data, output_data)         
 
-# Save both scalers
-with open('owa_scaler.pkl', 'wb') as f:
-    pickle.dump((scaler, scaler_y), f)  # Save input and output scalers
+poly_model = make_pipeline(PolynomialFeatures(degree=4), LinearRegression())
+poly_model.fit(input_data, output_data)
 
-# Define the model
-model = Sequential([
-    Dense(64, activation='relu', input_shape=(input_train.shape[1],), kernel_regularizer=l2(0.01)),
-    Dense(32, activation='relu', kernel_regularizer=l2(0.01)),
-    Dense(output_train.shape[1], activation='exponential', kernel_regularizer=l2(0.01))
-])
+poly_ridge = make_pipeline(PolynomialFeatures(degree=4), Ridge(alpha=1.0))
+poly_ridge.fit(input_data, output_data)
 
-# Compile the model
-optimizer = Adam(learning_rate=0.001)
-model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mean_absolute_error', 'mean_squared_error'])
+poly_lasso = make_pipeline(PolynomialFeatures(degree=4), Lasso(alpha=0.1, max_iter=10000))
+poly_lasso.fit(input_data, output_data)
 
-# Model summary
-model.summary()
 
-# Define callbacks
-early_stopping = EarlyStopping(monitor='val_loss', patience=20, restore_best_weights=True, verbose=1)
-lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-6, verbose=1)
+# Function to find the best w1, w2, w3 for a given auv_count and area
+def find_optimal_weights(auv_count, area, regressor):
+    weight_combinations = [(10, 0, 0), (9, 1, 0), (8, 2, 0), (8, 2, 1), (8, 1, 1),
+                           (7, 3, 0), (7, 2, 1), (6, 4, 0), (6, 2, 2), (6, 3, 1),
+                           (5, 5, 0), (5, 4, 1), (5, 3, 2), (4, 4, 2), (4, 3, 3)]
+    test_df = pd.DataFrame(weight_combinations, columns=['w1', 'w2', 'w3'])
+    test_df['auv_count'] = auv_count
+    test_df['area'] = area
 
-# Train the model
-history = model.fit(
-    input_train, output_train,
-    epochs=500,
-    batch_size=128,
-    validation_split=0.2,
-    callbacks=[early_stopping, lr_scheduler]
-)
+    predicted_utilities = regressor.predict(test_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values)
+    
+    # Find the best combination that maximizes utility
+    best_idx = np.argmax(predicted_utilities)
+    best_w1, best_w2, best_w3 = weight_combinations[best_idx]
+    best_utility = predicted_utilities[best_idx].item()
 
-# Evaluate the model on the test set
-test_loss, test_mae, test_mse = model.evaluate(input_test, output_test, verbose=1)
+    # print(predicted_utilities)
+    return best_w1, best_w2, best_w3, best_utility
 
-# Save the trained model
-model.save('owa_model.keras')
+auv_count = 3
+area = 25000
+print("-----------------------------------------------------")
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, dtree)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using DECISSION TREES:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+print("-----------------------------------------------------")
 
-# Plot training and validation loss
-plt.plot(history.history['loss'], label='Training Loss')
-plt.plot(history.history['val_loss'], label='Validation Loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.legend()
-plt.title('Training and Validation Loss')
-plt.show()
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, randf)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using RANDOM FOREST:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+print("-----------------------------------------------------")
 
-# Plot training and validation MAE
-plt.plot(history.history['mean_absolute_error'], label='Training MAE')
-plt.plot(history.history['val_mean_absolute_error'], label='Validation MAE')
-plt.xlabel('Epochs')
-plt.ylabel('Mean Absolute Error')
-plt.legend()
-plt.title('Training and Validation MAE')
-plt.show()
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, svr)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using SUPPORT VECTOR REGRESSION:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+print("-----------------------------------------------------")
 
-# Plot training and validation MSE
-plt.plot(history.history['mean_squared_error'], label='Training MSE')
-plt.plot(history.history['val_mean_squared_error'], label='Validation MSE')
-plt.xlabel('Epochs')
-plt.ylabel('Mean Squared Error')
-plt.legend()
-plt.title('Training and Validation MSE')
-plt.show()
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, knn)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using NEAREST NEIGHBORS:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+print("-----------------------------------------------------")
+
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, poly_model)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using POLYNOMIAL REGRESSION:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+print("-----------------------------------------------------")
+
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, poly_ridge)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using POLYNOMIAL RIDGE:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+print("-----------------------------------------------------")
+
+best_w1, best_w2, best_w3, best_utility = find_optimal_weights(auv_count, area, poly_lasso)
+print(f"Optimal weights for auv_count={auv_count}, area={area} using POLYNOMIAL LASSO:")
+print(f"w1 = {best_w1}, w2 = {best_w2}, w3 = {best_w3} (Utility = {best_utility:.3f})")
+
