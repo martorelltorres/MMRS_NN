@@ -37,14 +37,13 @@ def find_optimal_owa_weights(auv_count, area, regressor):
     owa_combinations = [(10, 0, 0), (9, 1, 0), (8, 2, 0), (8, 2, 1), (8, 1, 1),
                         (7, 3, 0), (7, 2, 1), (6, 4, 0), (6, 2, 2), (6, 3, 1),
                         (5, 5, 0), (5, 4, 1), (5, 3, 2), (4, 4, 2), (4, 3, 3)]
-    # owa_combinations = [(10, 0, 0), (8, 2, 0), (6, 4, 0), (4, 4, 2)]
     df = pd.DataFrame(owa_combinations, columns=['w1', 'w2', 'w3'])
     df['auv_count'] = auv_count
     df['area'] = area
     preds = regressor.predict(df[['auv_count', 'area']].values)
     best_idx = np.argmax(preds[:, 3])
     best = owa_combinations[best_idx]
-    return *best, preds[best_idx]
+    return preds[best_idx]
 
 # --------------------- COMPARATIVA DE RESULTADOS COMPLETA (ÁREAS VISTAS + INTERMEDIAS) ---------------------
 
@@ -61,8 +60,6 @@ comparison_rows = []
 
 for auv in unique_auv_counts:
     for area in all_areas:
-        input_data = np.array([[auv, area]])
-
         # Buscar los valores reales si existen
         real_row = owa_df[(owa_df['auv_count'] == auv) & (owa_df['area'] == area)]
         if not real_row.empty:
@@ -83,11 +80,13 @@ for auv in unique_auv_counts:
         }
 
         for name, model in owa_models.items():
-            w1_pred, w2_pred, w3_pred, utility_pred = model.predict(input_data)[0]
-            row_result[f"{name}_w1"] = w1_pred
-            row_result[f"{name}_w2"] = w2_pred
-            row_result[f"{name}_w3"] = w3_pred
-            row_result[f"{name}_utility"] = utility_pred
+
+            utility_pred = find_optimal_owa_weights(auv, area, model)
+            row_result[f"{name}_prediction"] = utility_pred[3]
+            row_result[f"{name}_w1"] = utility_pred[0]
+            row_result[f"{name}_w2"] = utility_pred[1]
+            row_result[f"{name}_w3"] = utility_pred[2]
+
         comparison_rows.append(row_result)
 
 # Convertir a DataFrame
@@ -99,3 +98,5 @@ print(comparison_df.head())
 # Guardar a CSV
 comparison_df.to_csv("owa_model_predictions_all_areas.csv", index=False)
 print("\n✅ Comparativa guardada en 'owa_model_predictions_all_areas.csv'")
+
+
