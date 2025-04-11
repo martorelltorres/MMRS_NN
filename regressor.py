@@ -27,34 +27,34 @@ import matplotlib.pyplot as plt
 # owa_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/optimal_weights.csv')
 
 paths = [
-    '/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/weights/3AUV_weights.csv',
-    '/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/weights/4AUV_weights.csv',
-    '/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/weights/5AUV_weights.csv',
-    '/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/weights/6AUV_weights.csv',
+    '/home/uib/MMRS_NN/weights/3AUV_weights.csv',
+    '/home/uib/MMRS_NN/weights/4AUV_weights.csv',
+    '/home/uib/MMRS_NN/weights/5AUV_weights.csv',
+    '/home/uib/MMRS_NN/weights/6AUV_weights.csv',
 ]
 
 owa_df = pd.concat([pd.read_csv(p) for p in paths], ignore_index=True)
 owa_input = owa_df[['auv_count', 'area']].values
 owa_output = owa_df[['w1', 'w2', 'w3', 'utility']].values
 
-# param_grid = {
-#     'estimator__C': [0.1, 1, 10, 100],
-#     'estimator__epsilon': [0.01, 0.1, 0.5],
-#     'estimator__gamma': [0.001, 0.01, 0.1]
-# }
+param_grid = {
+    'estimator__C': [0.1, 1, 10, 100],
+    'estimator__epsilon': [0.01, 0.1, 0.5],
+    'estimator__gamma': [0.001, 0.01, 0.1]
+}
 
-# base_svr = svm.SVR(kernel='rbf')
-# multi_svr = MultiOutputRegressor(base_svr)
+base_svr = svm.SVR(kernel='rbf')
+multi_svr = MultiOutputRegressor(base_svr)
 
-# grid_search = GridSearchCV(multi_svr, param_grid, cv=5, scoring='neg_mean_squared_error')
-# grid_search.fit(owa_input, owa_output)
+grid_search = GridSearchCV(multi_svr, param_grid, cv=5, scoring='neg_mean_squared_error')
+grid_search.fit(owa_input, owa_output)
 
-# print("Mejores hiperparámetros encontrados:", grid_search.best_params_)
+print("Mejores hiperparámetros encontrados:", grid_search.best_params_)
 
 
 # --------------------- DEFINICIÓN DE MODELOS ---------------------
 owa_models = {
-    "Decision Tree": MultiOutputRegressor(DecisionTreeRegressor(max_depth=4, min_samples_leaf=3)),
+    "Decision Tree": MultiOutputRegressor(DecisionTreeRegressor(max_depth=5, min_samples_leaf=3)),
     "Random Forest": MultiOutputRegressor(RandomForestRegressor(n_estimators=1000)),
     "SVM": MultiOutputRegressor(svm.SVR(kernel='rbf', C=10, epsilon=0.3, gamma =0.1)),
 
