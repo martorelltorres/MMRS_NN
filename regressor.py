@@ -17,6 +17,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.neural_network import MLPRegressor
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import ElasticNet
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # --------------------- CARGA DE DATOS DE ENTRENAMIENTO ---------------------
 # OWA
@@ -129,7 +132,7 @@ comparison_df = pd.DataFrame(comparison_rows)
 print(comparison_df.head())
 
 # Guardar a CSV
-comparison_df.to_csv("owa_model_predictions_all_areas.csv", index=False)
+comparison_df.to_csv("results/owa_model_predictions_all_areas.csv", index=False)
 print("\n Comparativa guardada a 'owa_model_predictions_all_areas.csv'")
 
 valid_rows = comparison_df.dropna(subset=["real_w1", "real_w2", "real_w3"])
@@ -159,7 +162,7 @@ print("\nMétricas por dataset (auv_count) y modelo:")
 print(detailed_error_df.round(3))
 
 # Guardar a CSV
-detailed_error_df.to_csv("owa_model_metrics_by_dataset.csv", index=False)
+detailed_error_df.to_csv("results/owa_model_metrics_by_dataset.csv", index=False)
 print("\n Métricas por dataset guardadas en 'owa_model_metrics_by_dataset.csv'")
 
 # MAE
@@ -173,5 +176,22 @@ print("\n Métricas por dataset guardadas en 'owa_model_metrics_by_dataset.csv'"
 # También se mide en las mismas unidades que tus datos.
 # Da más peso a los errores grandes, lo que lo hace útil si te preocupa que tu modelo a veces falle mucho.
 # A diferencia de MAE, RMSE no es robusto frente a outliers.
+
+# Reorganizar datos en formato largo para facilitar el plot
+df_long = owa_df.melt(id_vars=["area", "auv_count", "utility"], 
+                  value_vars=["w1", "w2", "w3"],
+                  var_name="weight_type",
+                  value_name="weight_value")
+
+# Graficar
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=df_long, x="area", y="weight_value", hue="weight_type", marker='o')
+plt.title("w1, w2, w3 vs exploration area")
+plt.xlabel("Exploration area")
+plt.ylabel("Weights value")
+plt.grid(True)
+plt.legend(title="Weights")
+plt.tight_layout()
+plt.show()
 
 
