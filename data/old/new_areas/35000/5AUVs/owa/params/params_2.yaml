@@ -1,0 +1,3962 @@
+adrift_radius: 20
+aggregation_model: 2
+alpha: 7.5
+area_exploration: 35000
+beta: 2.5
+mrs:
+  AUV_robot0:
+    navigation_depth: 5
+    robot_ID: 0
+    robot_name: robot0
+  AUV_robot1:
+    navigation_depth: 5
+    robot_ID: 1
+    robot_name: robot1
+  AUV_robot2:
+    navigation_depth: 5
+    robot_ID: 2
+    robot_name: robot2
+  AUV_robot3:
+    navigation_depth: 5
+    robot_ID: 3
+    robot_name: robot3
+  AUV_robot4:
+    navigation_depth: 5
+    robot_ID: 4
+    robot_name: robot4
+  adrift_radius: 20
+  aggregation_model: 2
+  alpha: 7.5
+  area_exploration: 35000
+  asv_robot5:
+    asv_ID: 0
+    robot_ID: 5
+  beta: 2.5
+  ned_origin_lat: 39.54333
+  ned_origin_lon: 2.37794
+  number_of_asvs: 1
+  number_of_auvs: 5
+  number_of_robots: 6
+  offset_coverage_distance: 5
+  offset_polygon_distance: 4
+  pickle_path: /home/uib/MMRS_ws/src/MMRS_stack/multi_robot_system/missions/pickle/5AUVs/35000.pickle
+  repulsion_radius: 10
+  surge_velocity: 1
+  task_allocation: 1
+  tolerance: 1
+  tracking_radius: 30
+  transmission_time: 30
+  w1: 0.6
+  w2: 0.4
+  w3: 0
+  w4: 0
+ned_origin_lat: 39.54333
+ned_origin_lon: 2.37794
+number_of_asvs: 1
+number_of_auvs: 5
+number_of_robots: 6
+offset_coverage_distance: 5
+offset_polygon_distance: 4
+pickle_path: /home/uib/MMRS_ws/src/MMRS_stack/multi_robot_system/missions/pickle/5AUVs/35000.pickle
+repulsion_radius: 10
+robot0:
+  captain:
+    disable_no_altitude_goes_up_service: safe_depth_altitude/disable_no_altitude_goes_up
+    enable_no_altitude_goes_up_service: safe_depth_altitude/enable_no_altitude_goes_up
+    idle_no_altitude_goes_up: false
+    max_distance_to_waypoint: 750.0
+    reset_keep_position_on_navigation_jump: true
+    safety_keep_position_depth: 0.0
+    safety_keep_position_goes_to_ned_origin: true
+    vehicle_config_launch_mission_package: cola2_robot0
+  controller:
+    TCM:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    enable_thrusters: true
+    max_force_thruster_negative: 100.0
+    max_force_thruster_positive: 100.0
+    max_velocity_pitch: 0.0
+    max_velocity_roll: 0.0
+    max_velocity_x: 0.5
+    max_velocity_y: 0.0
+    max_velocity_yaw: 0.3
+    max_velocity_z: 0.3
+    max_wrench_Pitch: 17.15
+    max_wrench_Roll: 3.66
+    max_wrench_X: 154.0
+    max_wrench_Y: 0.0
+    max_wrench_Yaw: 14.43
+    max_wrench_Z: 30.0
+    n_thrusters: 3
+    p_heave_fff: 0.0
+    p_heave_i_limit: 0.0
+    p_heave_kp: 1.2
+    p_heave_td: 0.0
+    p_heave_ti: 0.0
+    p_pitch_fff: 0.0
+    p_pitch_i_limit: 0.0
+    p_pitch_kp: 0.0
+    p_pitch_td: 0.0
+    p_pitch_ti: 0.0
+    p_roll_fff: 0.0
+    p_roll_i_limit: 0.0
+    p_roll_kp: 0.0
+    p_roll_td: 0.0
+    p_roll_ti: 0.0
+    p_surge_fff: 0.0
+    p_surge_i_limit: 0.0
+    p_surge_kp: 0.0
+    p_surge_td: 0.0
+    p_surge_ti: 0.0
+    p_sway_fff: 0.0
+    p_sway_i_limit: 0.0
+    p_sway_kp: 0.0
+    p_sway_td: 0.0
+    p_sway_ti: 0.0
+    p_yaw_fff: 0.0
+    p_yaw_i_limit: 0.0
+    p_yaw_kp: 2.5
+    p_yaw_td: 0.0
+    p_yaw_ti: 0.0
+    period: 0.1
+    poly_heave_A: 0.0
+    poly_heave_B: 4.0
+    poly_heave_C: 250.0
+    poly_pitch_A: 0.0
+    poly_pitch_B: 0.0
+    poly_pitch_C: 0.0
+    poly_roll_A: 0.0
+    poly_roll_B: 0.0
+    poly_roll_C: 0.0
+    poly_surge_A: 0.0
+    poly_surge_B: 0.0
+    poly_surge_C: 25.0
+    poly_sway_A: 0.0
+    poly_sway_B: 0.0
+    poly_sway_C: 0.0
+    poly_yaw_A: 0.0
+    poly_yaw_B: 0.0
+    poly_yaw_C: 10.8
+    set_zero_velocity_axes:
+    - true
+    - false
+    - true
+    - false
+    - false
+    - true
+    set_zero_velocity_depth: 1.0
+    t_heave_fff: 0.1
+    t_heave_i_limit: 0.15
+    t_heave_kp: 0.75
+    t_heave_td: 0.0
+    t_heave_ti: 5.0
+    t_pitch_fff: 0.0
+    t_pitch_i_limit: 1.0
+    t_pitch_kp: 0.0
+    t_pitch_td: 0.0
+    t_pitch_ti: 0.0
+    t_roll_fff: 0.0
+    t_roll_i_limit: 1.0
+    t_roll_kp: 0.0
+    t_roll_td: 0.0
+    t_roll_ti: 0.0
+    t_surge_fff: 0.0
+    t_surge_i_limit: 0.25
+    t_surge_kp: 0.25
+    t_surge_td: 0.0
+    t_surge_ti: 20.0
+    t_sway_fff: 0.0
+    t_sway_i_limit: 1.0
+    t_sway_kp: 0.0
+    t_sway_td: 0.0
+    t_sway_ti: 0.0
+    t_yaw_fff: 0.0
+    t_yaw_i_limit: 0.15
+    t_yaw_kp: 2.5
+    t_yaw_td: 0.0
+    t_yaw_ti: 8.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_distance_yaw: 0.51
+  default_param_handler:
+    config_folder: sim_config
+    config_pkg: cola2_turbot
+  diagnostic_aggregator:
+    analyzers:
+      control:
+        name:
+        - controller
+        - teleoperation
+        - captain
+        - pilot
+        - thrusters
+        path: control
+        type: diagnostic_aggregator/GenericAnalyzer
+      navigation:
+        name:
+        - pressure
+        - imu
+        - imu_filter
+        - gps
+        - dvl
+        - navigator
+        path: navigation
+        type: diagnostic_aggregator/GenericAnalyzer
+      safety:
+        name:
+        - batteries
+        - main_control_board
+        - battery_control_board
+        - virtual_cage
+        - safe_depth_altitude
+        - watchdog_timer
+        - comms
+        - modem
+        - computer_logger
+        - param_logger
+        - safety_supervisor_checker
+        - bag_recorder
+        - cola2_version
+        - default_param_handler
+        path: safety
+        type: diagnostic_aggregator/GenericAnalyzer
+    base_path: ''
+    pub_rate: 2.0
+  dynamics:
+    buoyancy: 56.3
+    buoyancy_center:
+    - 0.0
+    - 0.0
+    - -0.02
+    damping:
+    - 0.0
+    - -4.0
+    - -4.0
+    - -1.0
+    - 0.0
+    - 0.0
+    density: 1030.0
+    fins_topic: ''
+    initial_pose:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    initial_velocity:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    mass: 56
+    number_of_thrusters: 3
+    period: 0.05
+    quadratic_damping:
+    - -25.0
+    - -250.0
+    - -250.0
+    - -5.0
+    - -10.8
+    - -10.8
+    radius: 0.115
+    tensor:
+    - 0.4
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thrusters_limiter:
+    - 0.6
+    - 1.0
+    - 1.0
+    thrusters_matrix:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    thrusters_max_step: 0.1
+    thrusters_symmetric: true
+    thrusters_tau: 0.1
+    use_force_topic: false
+    world_frame_id: world_ned
+  logitech_fx10_to_teleoperation:
+    start_service: /sparus2/captain/enable_keep_position_non_holonomic
+    stop_service: /sparus2/captain/disable_all_keep_positions
+  mission_reporter:
+    filter_nodes:
+    - mission_reporter
+    - rosbridge_tcp
+    filter_regex:
+    - Too big acceleration \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\) in time -?\d*\.\d*
+      with new velocity \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\)
+    - DVL update rejected\.
+    reports_folder: logs/mission_reports
+    rosout_include_nanoseconds: true
+    rosout_time_format: '%H:%M:%S'
+  navigator:
+    depth_sensor_offset: 0.0
+    dvl_fallback_delay: 0.0
+    dvl_max_v: 2.5
+    enable_debug: false
+    gps_samples_to_init: 4
+    initial_state_covariance:
+    - 2.0
+    - 2.0
+    - 0.5
+    - 0.04
+    - 0.04
+    - 0.04
+    initialize_depth_sensor_offset: false
+    initialize_filter_from_gps: true
+    min_diagnostics_frequency: 25.0
+    ned_latitude: 39.54333
+    ned_longitude: 2.37794
+    prediction_model_covariance:
+    - 0.02
+    - 0.02
+    - 0.02
+    surface_to_depth_sensor_distance: 0.05
+    use_depth_data: true
+    use_dvl_data: true
+    use_gps_data: true
+    use_usbl_data: true
+    water_density: 1030.0
+  pilot:
+    anchor:
+      kp: 0.1
+      max_surge_velocity: 0.3
+      min_surge_velocity: -0.1
+      radius: 1.0
+    section:
+      delta: 6.0
+      distance_to_max_velocity: 5.0
+      max_surge_velocity: 2.5
+      min_surge_velocity: 0.2
+      tolerance_z: 1.0
+  robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+    \ -->\n<!-- |    This document was autogenerated by xacro from /home/uib/MMRS_ws/src/MMRS_stack/turbot_description/urdf/payload.urdf.xacro\
+    \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED              \
+    \                   | -->\n<!-- ===================================================================================\
+    \ -->\n<robot name=\"turbot\">\n  <!-- Base link -->\n  <link name=\"robot0/base_link\"\
+    >\n    <visual>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <geometry>\n\
+    \        <mesh filename=\"package://turbot_description/meshes/turbot.dae\" scale=\"\
+    1 1 1\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!-- Link -->\n  <link\
+    \ name=\"robot0/dvl\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0\
+    \ 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+    0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+    \ Joint -->\n  <joint name=\"robot0/base_link_to_dvl_joint\" type=\"fixed\">\n\
+    \    <parent link=\"robot0/base_link\"/>\n    <child link=\"robot0/dvl\"/>\n \
+    \   <origin rpy=\"3.141593 0.000000 2.356194\" xyz=\"-0.414500 0.000000 0.110000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot0/dvl_altitude\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot0/dvl_to_dvl_altitude_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot0/dvl\"/>\n    <child link=\"robot0/dvl_altitude\"\
+    />\n    <origin rpy=\"0.000000 1.570796 0.000000\" xyz=\"0.000000 0.000000 0.000000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot0/gps\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot0/base_link_to_gps_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot0/base_link\"/>\n    <child link=\"\
+    robot0/gps\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"-0.390000\
+    \ 0.000000 -0.360000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot0/imu\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot0/base_link_to_imu_joint\" type=\"fixed\">\n    <parent link=\"robot0/base_link\"\
+    />\n    <child link=\"robot0/imu\"/>\n    <origin rpy=\"1.570796 0.000000 1.570796\"\
+    \ xyz=\"0.363770 -0.020930 -0.084900\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+    \ name=\"robot0/imu_filter\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+    0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\"\
+    \ ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+    \  <!-- Joint -->\n  <joint name=\"robot0/base_link_to_imu_filter_joint\" type=\"\
+    fixed\">\n    <parent link=\"robot0/base_link\"/>\n    <child link=\"robot0/imu_filter\"\
+    />\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.363770 -0.020930 -0.084900\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot0/modem\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot0/base_link_to_modem_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot0/base_link\"/>\n    <child link=\"\
+    robot0/modem\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.437000\
+    \ 0.000000 -0.130000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot0/pressure\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot0/base_link_to_pressure_joint\" type=\"fixed\">\n    <parent link=\"robot0/base_link\"\
+    />\n    <child link=\"robot0/pressure\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 0.000000\" xyz=\"0.387000 0.000000 -0.033000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot0/thruster_0\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot0/base_link_to_thruster_0_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot0/base_link\"/>\n    <child link=\"\
+    robot0/thruster_0\"/>\n    <origin rpy=\"0.000000 -1.570796 0.000000\" xyz=\"\
+    0.000000 0.000000 0.080000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot0/thruster_1\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot0/base_link_to_thruster_1_joint\" type=\"fixed\">\n    <parent link=\"robot0/base_link\"\
+    />\n    <child link=\"robot0/thruster_1\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 3.141593\" xyz=\"-0.590000 0.170000 0.000000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot0/thruster_2\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot0/base_link_to_thruster_2_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot0/base_link\"/>\n    <child link=\"\
+    robot0/thruster_2\"/>\n    <origin rpy=\"0.000000 0.000000 3.141593\" xyz=\"-0.590000\
+    \ -0.170000 0.000000\"/>\n  </joint>\n</robot>\n\n"
+  safe_depth_altitude:
+    max_depth: 200.0
+    min_altitude: 1.0
+    min_altitude_starts_at_depth: 0.5
+  safety_supervisor:
+    batteries:
+      min_charge: 14.5
+      min_voltage: 26.4
+      type: BatteryLevel
+    battery_control_board:
+      type: BatteryControlBoard
+    captain:
+      type: Captain
+    check_enabled_abort_and_surface:
+      diagnostic_status_names_to_check:
+      - /safety/safe_depth_altitude
+      - /safety/bag_recorder
+      - /safety/default_param_handler
+      level_if_not_enabled: 3
+      type: CheckEnabled
+    check_enabled_emergency_surface:
+      diagnostic_status_names_to_check:
+      - /control/controller
+      - /control/captain
+      - /control/pilot
+      - /safety/safety_supervisor_checker
+      level_if_not_enabled: 4
+      type: CheckEnabled
+    check_enabled_informative:
+      diagnostic_status_names_to_check:
+      - /control/thrusters
+      - /safety/param_logger
+      - /safety/cola2_version
+      level_if_not_enabled: 1
+      type: CheckEnabled
+    drop_weight_service: ''
+    emergency_surface_setpoints:
+    - -0.3
+    - 0.0
+    - 0.0
+    manual:
+      type: Manual
+    navigator:
+      altitude_data_timeout: 30.0
+      depth_data_timeout: 10.0
+      dvl_data_timeout: 30.0
+      gps_data_timeout: 30.0
+      imu_data_timeout: 10.0
+      min_frequency: 18.0
+      nav_data_timeout: 2.0
+      type: Navigator
+    safety_rule_names:
+    - batteries
+    - battery_control_board
+    - captain
+    - check_enabled_abort_and_surface
+    - check_enabled_emergency_surface
+    - check_enabled_informative
+    - teleoperation
+    - manual
+    - navigator
+    - temperature_batteries
+    - temperature_cpu
+    - temperature_pc_cylinder
+    - virtual_cage
+    - watchdog_timer
+    - water_inside
+    teleoperation:
+      teleoperation_link_timeout: 60.0
+      type: Teleoperation
+    temperature_batteries:
+      diagnostic_status_name: /safety/batteries
+      max_temperature: 55.0
+      type: Temperature
+    temperature_cpu:
+      diagnostic_status_name: /safety/computer_logger
+      max_temperature: 80.0
+      type: Temperature
+    temperature_pc_cylinder:
+      diagnostic_status_name: /safety/battery_control_board
+      max_temperature: 80.0
+      type: Temperature
+    virtual_cage:
+      enables_abort_and_surface: false
+      type: VirtualCage
+    watchdog_timer:
+      timeout: 36000
+      type: WatchdogTimer
+    water_inside:
+      check_battery_housing: false
+      check_extra_housing: false
+      type: CombinedWaterInside
+  sim_auv_nav_sensors:
+    depth_period: 0.2
+    depth_pressure_covariance: 10000.0
+    dvl_period: 0.2
+    dvl_velocity_covariance:
+    - 2.25e-06
+    - 2.25e-06
+    - 2.25e-06
+    gps_period: 1.0
+    gps_position_covariance:
+    - 1.0
+    - 1.0
+    imu_orientation_covariance:
+    - 1.0e-08
+    - 1.0e-08
+    - 1.0e-08
+    imu_period: 0.05
+    output_depth_pressure_covariance: 1000000.0
+    output_dvl_velocity_covariance:
+    - 0.04
+    - 0.04
+    - 0.04
+    output_gps_position_covariance:
+    - 9.0
+    - 9.0
+    output_imu_orientation_covariance:
+    - 0.01
+    - 0.01
+    - 0.01
+    output_usbl_position_covariance: 9.0
+    sea_bottom_depth: 15.0
+    sound_speed: 1500
+    usbl_depth_start: 2.0
+    usbl_period: 0.0
+    usbl_position_covariance: 1.0
+  sim_internal_sensors:
+    battery_consumption_per_second: 0.004
+    initial_battery_level: 98
+  teleoperation:
+    actualize_base_pose: true
+    base_pose:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    max_pos:
+    - 10.0
+    - 10.0
+    - 2.0
+    - 3.14159265359
+    - 3.14159265359
+    - 3.14159265359
+    max_vel:
+    - 0.5
+    - 0.0
+    - 0.35
+    - 0.0
+    - 0.0
+    - 0.3
+    min_pos:
+    - -10.0
+    - -10.0
+    - -2.0
+    - -3.14159265359
+    - -3.14159265359
+    - -3.14159265359
+    min_vel:
+    - -0.25
+    - 0.0
+    - -0.35
+    - 0.0
+    - 0.0
+    - -0.3
+    pose_controlled_axis:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+  virtual_cage:
+    cage_center_east: 0.0
+    cage_center_north: 0.0
+    cage_radius: 500.0
+robot1:
+  captain:
+    disable_no_altitude_goes_up_service: safe_depth_altitude/disable_no_altitude_goes_up
+    enable_no_altitude_goes_up_service: safe_depth_altitude/enable_no_altitude_goes_up
+    idle_no_altitude_goes_up: false
+    max_distance_to_waypoint: 750.0
+    reset_keep_position_on_navigation_jump: true
+    safety_keep_position_depth: 0.0
+    safety_keep_position_goes_to_ned_origin: true
+    vehicle_config_launch_mission_package: cola2_robot1
+  controller:
+    TCM:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    enable_thrusters: true
+    max_force_thruster_negative: 100.0
+    max_force_thruster_positive: 100.0
+    max_velocity_pitch: 0.0
+    max_velocity_roll: 0.0
+    max_velocity_x: 0.5
+    max_velocity_y: 0.0
+    max_velocity_yaw: 0.3
+    max_velocity_z: 0.3
+    max_wrench_Pitch: 17.15
+    max_wrench_Roll: 3.66
+    max_wrench_X: 154.0
+    max_wrench_Y: 0.0
+    max_wrench_Yaw: 14.43
+    max_wrench_Z: 30.0
+    n_thrusters: 3
+    p_heave_fff: 0.0
+    p_heave_i_limit: 0.0
+    p_heave_kp: 1.2
+    p_heave_td: 0.0
+    p_heave_ti: 0.0
+    p_pitch_fff: 0.0
+    p_pitch_i_limit: 0.0
+    p_pitch_kp: 0.0
+    p_pitch_td: 0.0
+    p_pitch_ti: 0.0
+    p_roll_fff: 0.0
+    p_roll_i_limit: 0.0
+    p_roll_kp: 0.0
+    p_roll_td: 0.0
+    p_roll_ti: 0.0
+    p_surge_fff: 0.0
+    p_surge_i_limit: 0.0
+    p_surge_kp: 0.0
+    p_surge_td: 0.0
+    p_surge_ti: 0.0
+    p_sway_fff: 0.0
+    p_sway_i_limit: 0.0
+    p_sway_kp: 0.0
+    p_sway_td: 0.0
+    p_sway_ti: 0.0
+    p_yaw_fff: 0.0
+    p_yaw_i_limit: 0.0
+    p_yaw_kp: 2.5
+    p_yaw_td: 0.0
+    p_yaw_ti: 0.0
+    period: 0.1
+    poly_heave_A: 0.0
+    poly_heave_B: 4.0
+    poly_heave_C: 250.0
+    poly_pitch_A: 0.0
+    poly_pitch_B: 0.0
+    poly_pitch_C: 0.0
+    poly_roll_A: 0.0
+    poly_roll_B: 0.0
+    poly_roll_C: 0.0
+    poly_surge_A: 0.0
+    poly_surge_B: 0.0
+    poly_surge_C: 25.0
+    poly_sway_A: 0.0
+    poly_sway_B: 0.0
+    poly_sway_C: 0.0
+    poly_yaw_A: 0.0
+    poly_yaw_B: 0.0
+    poly_yaw_C: 10.8
+    set_zero_velocity_axes:
+    - true
+    - false
+    - true
+    - false
+    - false
+    - true
+    set_zero_velocity_depth: 1.0
+    t_heave_fff: 0.1
+    t_heave_i_limit: 0.15
+    t_heave_kp: 0.75
+    t_heave_td: 0.0
+    t_heave_ti: 5.0
+    t_pitch_fff: 0.0
+    t_pitch_i_limit: 1.0
+    t_pitch_kp: 0.0
+    t_pitch_td: 0.0
+    t_pitch_ti: 0.0
+    t_roll_fff: 0.0
+    t_roll_i_limit: 1.0
+    t_roll_kp: 0.0
+    t_roll_td: 0.0
+    t_roll_ti: 0.0
+    t_surge_fff: 0.0
+    t_surge_i_limit: 0.25
+    t_surge_kp: 0.25
+    t_surge_td: 0.0
+    t_surge_ti: 20.0
+    t_sway_fff: 0.0
+    t_sway_i_limit: 1.0
+    t_sway_kp: 0.0
+    t_sway_td: 0.0
+    t_sway_ti: 0.0
+    t_yaw_fff: 0.0
+    t_yaw_i_limit: 0.15
+    t_yaw_kp: 2.5
+    t_yaw_td: 0.0
+    t_yaw_ti: 8.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_distance_yaw: 0.51
+  default_param_handler:
+    config_folder: sim_config
+    config_pkg: cola2_turbot
+  diagnostic_aggregator:
+    analyzers:
+      control:
+        name:
+        - controller
+        - teleoperation
+        - captain
+        - pilot
+        - thrusters
+        path: control
+        type: diagnostic_aggregator/GenericAnalyzer
+      navigation:
+        name:
+        - pressure
+        - imu
+        - imu_filter
+        - gps
+        - dvl
+        - navigator
+        path: navigation
+        type: diagnostic_aggregator/GenericAnalyzer
+      safety:
+        name:
+        - batteries
+        - main_control_board
+        - battery_control_board
+        - virtual_cage
+        - safe_depth_altitude
+        - watchdog_timer
+        - comms
+        - modem
+        - computer_logger
+        - param_logger
+        - safety_supervisor_checker
+        - bag_recorder
+        - cola2_version
+        - default_param_handler
+        path: safety
+        type: diagnostic_aggregator/GenericAnalyzer
+    base_path: ''
+    pub_rate: 2.0
+  dynamics:
+    buoyancy: 56.3
+    buoyancy_center:
+    - 0.0
+    - 0.0
+    - -0.02
+    damping:
+    - 0.0
+    - -4.0
+    - -4.0
+    - -1.0
+    - 0.0
+    - 0.0
+    density: 1030.0
+    fins_topic: ''
+    initial_pose:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    initial_velocity:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    mass: 56
+    number_of_thrusters: 3
+    period: 0.05
+    quadratic_damping:
+    - -25.0
+    - -250.0
+    - -250.0
+    - -5.0
+    - -10.8
+    - -10.8
+    radius: 0.115
+    tensor:
+    - 0.4
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thrusters_limiter:
+    - 0.6
+    - 1.0
+    - 1.0
+    thrusters_matrix:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    thrusters_max_step: 0.1
+    thrusters_symmetric: true
+    thrusters_tau: 0.1
+    use_force_topic: false
+    world_frame_id: world_ned
+  logitech_fx10_to_teleoperation:
+    start_service: /sparus2/captain/enable_keep_position_non_holonomic
+    stop_service: /sparus2/captain/disable_all_keep_positions
+  mission_reporter:
+    filter_nodes:
+    - mission_reporter
+    - rosbridge_tcp
+    filter_regex:
+    - Too big acceleration \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\) in time -?\d*\.\d*
+      with new velocity \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\)
+    - DVL update rejected\.
+    reports_folder: logs/mission_reports
+    rosout_include_nanoseconds: true
+    rosout_time_format: '%H:%M:%S'
+  navigator:
+    depth_sensor_offset: 0.0
+    dvl_fallback_delay: 0.0
+    dvl_max_v: 2.5
+    enable_debug: false
+    gps_samples_to_init: 4
+    initial_state_covariance:
+    - 2.0
+    - 2.0
+    - 0.5
+    - 0.04
+    - 0.04
+    - 0.04
+    initialize_depth_sensor_offset: false
+    initialize_filter_from_gps: true
+    min_diagnostics_frequency: 25.0
+    ned_latitude: 39.54333
+    ned_longitude: 2.37794
+    prediction_model_covariance:
+    - 0.02
+    - 0.02
+    - 0.02
+    surface_to_depth_sensor_distance: 0.05
+    use_depth_data: true
+    use_dvl_data: true
+    use_gps_data: true
+    use_usbl_data: true
+    water_density: 1030.0
+  pilot:
+    anchor:
+      kp: 0.1
+      max_surge_velocity: 0.3
+      min_surge_velocity: -0.1
+      radius: 1.0
+    section:
+      delta: 6.0
+      distance_to_max_velocity: 5.0
+      max_surge_velocity: 2.5
+      min_surge_velocity: 0.2
+      tolerance_z: 1.0
+  robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+    \ -->\n<!-- |    This document was autogenerated by xacro from /home/uib/MMRS_ws/src/MMRS_stack/turbot_description/urdf/payload.urdf.xacro\
+    \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED              \
+    \                   | -->\n<!-- ===================================================================================\
+    \ -->\n<robot name=\"turbot\">\n  <!-- Base link -->\n  <link name=\"robot1/base_link\"\
+    >\n    <visual>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <geometry>\n\
+    \        <mesh filename=\"package://turbot_description/meshes/turbot.dae\" scale=\"\
+    1 1 1\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!-- Link -->\n  <link\
+    \ name=\"robot1/dvl\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0\
+    \ 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+    0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+    \ Joint -->\n  <joint name=\"robot1/base_link_to_dvl_joint\" type=\"fixed\">\n\
+    \    <parent link=\"robot1/base_link\"/>\n    <child link=\"robot1/dvl\"/>\n \
+    \   <origin rpy=\"3.141593 0.000000 2.356194\" xyz=\"-0.414500 0.000000 0.110000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot1/dvl_altitude\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot1/dvl_to_dvl_altitude_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot1/dvl\"/>\n    <child link=\"robot1/dvl_altitude\"\
+    />\n    <origin rpy=\"0.000000 1.570796 0.000000\" xyz=\"0.000000 0.000000 0.000000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot1/gps\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot1/base_link_to_gps_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot1/base_link\"/>\n    <child link=\"\
+    robot1/gps\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"-0.390000\
+    \ 0.000000 -0.360000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot1/imu\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot1/base_link_to_imu_joint\" type=\"fixed\">\n    <parent link=\"robot1/base_link\"\
+    />\n    <child link=\"robot1/imu\"/>\n    <origin rpy=\"1.570796 0.000000 1.570796\"\
+    \ xyz=\"0.363770 -0.020930 -0.084900\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+    \ name=\"robot1/imu_filter\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+    0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\"\
+    \ ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+    \  <!-- Joint -->\n  <joint name=\"robot1/base_link_to_imu_filter_joint\" type=\"\
+    fixed\">\n    <parent link=\"robot1/base_link\"/>\n    <child link=\"robot1/imu_filter\"\
+    />\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.363770 -0.020930 -0.084900\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot1/modem\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot1/base_link_to_modem_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot1/base_link\"/>\n    <child link=\"\
+    robot1/modem\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.437000\
+    \ 0.000000 -0.130000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot1/pressure\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot1/base_link_to_pressure_joint\" type=\"fixed\">\n    <parent link=\"robot1/base_link\"\
+    />\n    <child link=\"robot1/pressure\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 0.000000\" xyz=\"0.387000 0.000000 -0.033000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot1/thruster_0\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot1/base_link_to_thruster_0_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot1/base_link\"/>\n    <child link=\"\
+    robot1/thruster_0\"/>\n    <origin rpy=\"0.000000 -1.570796 0.000000\" xyz=\"\
+    0.000000 0.000000 0.080000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot1/thruster_1\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot1/base_link_to_thruster_1_joint\" type=\"fixed\">\n    <parent link=\"robot1/base_link\"\
+    />\n    <child link=\"robot1/thruster_1\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 3.141593\" xyz=\"-0.590000 0.170000 0.000000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot1/thruster_2\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot1/base_link_to_thruster_2_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot1/base_link\"/>\n    <child link=\"\
+    robot1/thruster_2\"/>\n    <origin rpy=\"0.000000 0.000000 3.141593\" xyz=\"-0.590000\
+    \ -0.170000 0.000000\"/>\n  </joint>\n</robot>\n\n"
+  safe_depth_altitude:
+    max_depth: 200.0
+    min_altitude: 1.0
+    min_altitude_starts_at_depth: 0.5
+  safety_supervisor:
+    batteries:
+      min_charge: 14.5
+      min_voltage: 26.4
+      type: BatteryLevel
+    battery_control_board:
+      type: BatteryControlBoard
+    captain:
+      type: Captain
+    check_enabled_abort_and_surface:
+      diagnostic_status_names_to_check:
+      - /safety/safe_depth_altitude
+      - /safety/bag_recorder
+      - /safety/default_param_handler
+      level_if_not_enabled: 3
+      type: CheckEnabled
+    check_enabled_emergency_surface:
+      diagnostic_status_names_to_check:
+      - /control/controller
+      - /control/captain
+      - /control/pilot
+      - /safety/safety_supervisor_checker
+      level_if_not_enabled: 4
+      type: CheckEnabled
+    check_enabled_informative:
+      diagnostic_status_names_to_check:
+      - /control/thrusters
+      - /safety/param_logger
+      - /safety/cola2_version
+      level_if_not_enabled: 1
+      type: CheckEnabled
+    drop_weight_service: ''
+    emergency_surface_setpoints:
+    - -0.3
+    - 0.0
+    - 0.0
+    manual:
+      type: Manual
+    navigator:
+      altitude_data_timeout: 30.0
+      depth_data_timeout: 10.0
+      dvl_data_timeout: 30.0
+      gps_data_timeout: 30.0
+      imu_data_timeout: 10.0
+      min_frequency: 18.0
+      nav_data_timeout: 2.0
+      type: Navigator
+    safety_rule_names:
+    - batteries
+    - battery_control_board
+    - captain
+    - check_enabled_abort_and_surface
+    - check_enabled_emergency_surface
+    - check_enabled_informative
+    - teleoperation
+    - manual
+    - navigator
+    - temperature_batteries
+    - temperature_cpu
+    - temperature_pc_cylinder
+    - virtual_cage
+    - watchdog_timer
+    - water_inside
+    teleoperation:
+      teleoperation_link_timeout: 60.0
+      type: Teleoperation
+    temperature_batteries:
+      diagnostic_status_name: /safety/batteries
+      max_temperature: 55.0
+      type: Temperature
+    temperature_cpu:
+      diagnostic_status_name: /safety/computer_logger
+      max_temperature: 80.0
+      type: Temperature
+    temperature_pc_cylinder:
+      diagnostic_status_name: /safety/battery_control_board
+      max_temperature: 80.0
+      type: Temperature
+    virtual_cage:
+      enables_abort_and_surface: false
+      type: VirtualCage
+    watchdog_timer:
+      timeout: 36000
+      type: WatchdogTimer
+    water_inside:
+      check_battery_housing: false
+      check_extra_housing: false
+      type: CombinedWaterInside
+  sim_auv_nav_sensors:
+    depth_period: 0.2
+    depth_pressure_covariance: 10000.0
+    dvl_period: 0.2
+    dvl_velocity_covariance:
+    - 2.25e-06
+    - 2.25e-06
+    - 2.25e-06
+    gps_period: 1.0
+    gps_position_covariance:
+    - 1.0
+    - 1.0
+    imu_orientation_covariance:
+    - 1.0e-08
+    - 1.0e-08
+    - 1.0e-08
+    imu_period: 0.05
+    output_depth_pressure_covariance: 1000000.0
+    output_dvl_velocity_covariance:
+    - 0.04
+    - 0.04
+    - 0.04
+    output_gps_position_covariance:
+    - 9.0
+    - 9.0
+    output_imu_orientation_covariance:
+    - 0.01
+    - 0.01
+    - 0.01
+    output_usbl_position_covariance: 9.0
+    sea_bottom_depth: 15.0
+    sound_speed: 1500
+    usbl_depth_start: 2.0
+    usbl_period: 0.0
+    usbl_position_covariance: 1.0
+  sim_internal_sensors:
+    battery_consumption_per_second: 0.004
+    initial_battery_level: 98
+  teleoperation:
+    actualize_base_pose: true
+    base_pose:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    max_pos:
+    - 10.0
+    - 10.0
+    - 2.0
+    - 3.14159265359
+    - 3.14159265359
+    - 3.14159265359
+    max_vel:
+    - 0.5
+    - 0.0
+    - 0.35
+    - 0.0
+    - 0.0
+    - 0.3
+    min_pos:
+    - -10.0
+    - -10.0
+    - -2.0
+    - -3.14159265359
+    - -3.14159265359
+    - -3.14159265359
+    min_vel:
+    - -0.25
+    - 0.0
+    - -0.35
+    - 0.0
+    - 0.0
+    - -0.3
+    pose_controlled_axis:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+  virtual_cage:
+    cage_center_east: 0.0
+    cage_center_north: 0.0
+    cage_radius: 500.0
+robot2:
+  captain:
+    disable_no_altitude_goes_up_service: safe_depth_altitude/disable_no_altitude_goes_up
+    enable_no_altitude_goes_up_service: safe_depth_altitude/enable_no_altitude_goes_up
+    idle_no_altitude_goes_up: false
+    max_distance_to_waypoint: 750.0
+    reset_keep_position_on_navigation_jump: true
+    safety_keep_position_depth: 0.0
+    safety_keep_position_goes_to_ned_origin: true
+    vehicle_config_launch_mission_package: cola2_robot2
+  controller:
+    TCM:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    enable_thrusters: true
+    max_force_thruster_negative: 100.0
+    max_force_thruster_positive: 100.0
+    max_velocity_pitch: 0.0
+    max_velocity_roll: 0.0
+    max_velocity_x: 0.5
+    max_velocity_y: 0.0
+    max_velocity_yaw: 0.3
+    max_velocity_z: 0.3
+    max_wrench_Pitch: 17.15
+    max_wrench_Roll: 3.66
+    max_wrench_X: 154.0
+    max_wrench_Y: 0.0
+    max_wrench_Yaw: 14.43
+    max_wrench_Z: 30.0
+    n_thrusters: 3
+    p_heave_fff: 0.0
+    p_heave_i_limit: 0.0
+    p_heave_kp: 1.2
+    p_heave_td: 0.0
+    p_heave_ti: 0.0
+    p_pitch_fff: 0.0
+    p_pitch_i_limit: 0.0
+    p_pitch_kp: 0.0
+    p_pitch_td: 0.0
+    p_pitch_ti: 0.0
+    p_roll_fff: 0.0
+    p_roll_i_limit: 0.0
+    p_roll_kp: 0.0
+    p_roll_td: 0.0
+    p_roll_ti: 0.0
+    p_surge_fff: 0.0
+    p_surge_i_limit: 0.0
+    p_surge_kp: 0.0
+    p_surge_td: 0.0
+    p_surge_ti: 0.0
+    p_sway_fff: 0.0
+    p_sway_i_limit: 0.0
+    p_sway_kp: 0.0
+    p_sway_td: 0.0
+    p_sway_ti: 0.0
+    p_yaw_fff: 0.0
+    p_yaw_i_limit: 0.0
+    p_yaw_kp: 2.5
+    p_yaw_td: 0.0
+    p_yaw_ti: 0.0
+    period: 0.1
+    poly_heave_A: 0.0
+    poly_heave_B: 4.0
+    poly_heave_C: 250.0
+    poly_pitch_A: 0.0
+    poly_pitch_B: 0.0
+    poly_pitch_C: 0.0
+    poly_roll_A: 0.0
+    poly_roll_B: 0.0
+    poly_roll_C: 0.0
+    poly_surge_A: 0.0
+    poly_surge_B: 0.0
+    poly_surge_C: 25.0
+    poly_sway_A: 0.0
+    poly_sway_B: 0.0
+    poly_sway_C: 0.0
+    poly_yaw_A: 0.0
+    poly_yaw_B: 0.0
+    poly_yaw_C: 10.8
+    set_zero_velocity_axes:
+    - true
+    - false
+    - true
+    - false
+    - false
+    - true
+    set_zero_velocity_depth: 1.0
+    t_heave_fff: 0.1
+    t_heave_i_limit: 0.15
+    t_heave_kp: 0.75
+    t_heave_td: 0.0
+    t_heave_ti: 5.0
+    t_pitch_fff: 0.0
+    t_pitch_i_limit: 1.0
+    t_pitch_kp: 0.0
+    t_pitch_td: 0.0
+    t_pitch_ti: 0.0
+    t_roll_fff: 0.0
+    t_roll_i_limit: 1.0
+    t_roll_kp: 0.0
+    t_roll_td: 0.0
+    t_roll_ti: 0.0
+    t_surge_fff: 0.0
+    t_surge_i_limit: 0.25
+    t_surge_kp: 0.25
+    t_surge_td: 0.0
+    t_surge_ti: 20.0
+    t_sway_fff: 0.0
+    t_sway_i_limit: 1.0
+    t_sway_kp: 0.0
+    t_sway_td: 0.0
+    t_sway_ti: 0.0
+    t_yaw_fff: 0.0
+    t_yaw_i_limit: 0.15
+    t_yaw_kp: 2.5
+    t_yaw_td: 0.0
+    t_yaw_ti: 8.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_distance_yaw: 0.51
+  default_param_handler:
+    config_folder: sim_config
+    config_pkg: cola2_turbot
+  diagnostic_aggregator:
+    analyzers:
+      control:
+        name:
+        - controller
+        - teleoperation
+        - captain
+        - pilot
+        - thrusters
+        path: control
+        type: diagnostic_aggregator/GenericAnalyzer
+      navigation:
+        name:
+        - pressure
+        - imu
+        - imu_filter
+        - gps
+        - dvl
+        - navigator
+        path: navigation
+        type: diagnostic_aggregator/GenericAnalyzer
+      safety:
+        name:
+        - batteries
+        - main_control_board
+        - battery_control_board
+        - virtual_cage
+        - safe_depth_altitude
+        - watchdog_timer
+        - comms
+        - modem
+        - computer_logger
+        - param_logger
+        - safety_supervisor_checker
+        - bag_recorder
+        - cola2_version
+        - default_param_handler
+        path: safety
+        type: diagnostic_aggregator/GenericAnalyzer
+    base_path: ''
+    pub_rate: 2.0
+  dynamics:
+    buoyancy: 56.3
+    buoyancy_center:
+    - 0.0
+    - 0.0
+    - -0.02
+    damping:
+    - 0.0
+    - -4.0
+    - -4.0
+    - -1.0
+    - 0.0
+    - 0.0
+    density: 1030.0
+    fins_topic: ''
+    initial_pose:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    initial_velocity:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    mass: 56
+    number_of_thrusters: 3
+    period: 0.05
+    quadratic_damping:
+    - -25.0
+    - -250.0
+    - -250.0
+    - -5.0
+    - -10.8
+    - -10.8
+    radius: 0.115
+    tensor:
+    - 0.4
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thrusters_limiter:
+    - 0.6
+    - 1.0
+    - 1.0
+    thrusters_matrix:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    thrusters_max_step: 0.1
+    thrusters_symmetric: true
+    thrusters_tau: 0.1
+    use_force_topic: false
+    world_frame_id: world_ned
+  logitech_fx10_to_teleoperation:
+    start_service: /sparus2/captain/enable_keep_position_non_holonomic
+    stop_service: /sparus2/captain/disable_all_keep_positions
+  mission_reporter:
+    filter_nodes:
+    - mission_reporter
+    - rosbridge_tcp
+    filter_regex:
+    - Too big acceleration \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\) in time -?\d*\.\d*
+      with new velocity \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\)
+    - DVL update rejected\.
+    reports_folder: logs/mission_reports
+    rosout_include_nanoseconds: true
+    rosout_time_format: '%H:%M:%S'
+  navigator:
+    depth_sensor_offset: 0.0
+    dvl_fallback_delay: 0.0
+    dvl_max_v: 2.5
+    enable_debug: false
+    gps_samples_to_init: 4
+    initial_state_covariance:
+    - 2.0
+    - 2.0
+    - 0.5
+    - 0.04
+    - 0.04
+    - 0.04
+    initialize_depth_sensor_offset: false
+    initialize_filter_from_gps: true
+    min_diagnostics_frequency: 25.0
+    ned_latitude: 39.54333
+    ned_longitude: 2.37794
+    prediction_model_covariance:
+    - 0.02
+    - 0.02
+    - 0.02
+    surface_to_depth_sensor_distance: 0.05
+    use_depth_data: true
+    use_dvl_data: true
+    use_gps_data: true
+    use_usbl_data: true
+    water_density: 1030.0
+  pilot:
+    anchor:
+      kp: 0.1
+      max_surge_velocity: 0.3
+      min_surge_velocity: -0.1
+      radius: 1.0
+    section:
+      delta: 6.0
+      distance_to_max_velocity: 5.0
+      max_surge_velocity: 2.5
+      min_surge_velocity: 0.2
+      tolerance_z: 1.0
+  robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+    \ -->\n<!-- |    This document was autogenerated by xacro from /home/uib/MMRS_ws/src/MMRS_stack/turbot_description/urdf/payload.urdf.xacro\
+    \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED              \
+    \                   | -->\n<!-- ===================================================================================\
+    \ -->\n<robot name=\"turbot\">\n  <!-- Base link -->\n  <link name=\"robot2/base_link\"\
+    >\n    <visual>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <geometry>\n\
+    \        <mesh filename=\"package://turbot_description/meshes/turbot.dae\" scale=\"\
+    1 1 1\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!-- Link -->\n  <link\
+    \ name=\"robot2/dvl\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0\
+    \ 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+    0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+    \ Joint -->\n  <joint name=\"robot2/base_link_to_dvl_joint\" type=\"fixed\">\n\
+    \    <parent link=\"robot2/base_link\"/>\n    <child link=\"robot2/dvl\"/>\n \
+    \   <origin rpy=\"3.141593 0.000000 2.356194\" xyz=\"-0.414500 0.000000 0.110000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot2/dvl_altitude\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot2/dvl_to_dvl_altitude_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot2/dvl\"/>\n    <child link=\"robot2/dvl_altitude\"\
+    />\n    <origin rpy=\"0.000000 1.570796 0.000000\" xyz=\"0.000000 0.000000 0.000000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot2/gps\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot2/base_link_to_gps_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot2/base_link\"/>\n    <child link=\"\
+    robot2/gps\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"-0.390000\
+    \ 0.000000 -0.360000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot2/imu\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot2/base_link_to_imu_joint\" type=\"fixed\">\n    <parent link=\"robot2/base_link\"\
+    />\n    <child link=\"robot2/imu\"/>\n    <origin rpy=\"1.570796 0.000000 1.570796\"\
+    \ xyz=\"0.363770 -0.020930 -0.084900\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+    \ name=\"robot2/imu_filter\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+    0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\"\
+    \ ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+    \  <!-- Joint -->\n  <joint name=\"robot2/base_link_to_imu_filter_joint\" type=\"\
+    fixed\">\n    <parent link=\"robot2/base_link\"/>\n    <child link=\"robot2/imu_filter\"\
+    />\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.363770 -0.020930 -0.084900\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot2/modem\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot2/base_link_to_modem_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot2/base_link\"/>\n    <child link=\"\
+    robot2/modem\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.437000\
+    \ 0.000000 -0.130000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot2/pressure\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot2/base_link_to_pressure_joint\" type=\"fixed\">\n    <parent link=\"robot2/base_link\"\
+    />\n    <child link=\"robot2/pressure\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 0.000000\" xyz=\"0.387000 0.000000 -0.033000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot2/thruster_0\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot2/base_link_to_thruster_0_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot2/base_link\"/>\n    <child link=\"\
+    robot2/thruster_0\"/>\n    <origin rpy=\"0.000000 -1.570796 0.000000\" xyz=\"\
+    0.000000 0.000000 0.080000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot2/thruster_1\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot2/base_link_to_thruster_1_joint\" type=\"fixed\">\n    <parent link=\"robot2/base_link\"\
+    />\n    <child link=\"robot2/thruster_1\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 3.141593\" xyz=\"-0.590000 0.170000 0.000000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot2/thruster_2\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot2/base_link_to_thruster_2_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot2/base_link\"/>\n    <child link=\"\
+    robot2/thruster_2\"/>\n    <origin rpy=\"0.000000 0.000000 3.141593\" xyz=\"-0.590000\
+    \ -0.170000 0.000000\"/>\n  </joint>\n</robot>\n\n"
+  safe_depth_altitude:
+    max_depth: 200.0
+    min_altitude: 1.0
+    min_altitude_starts_at_depth: 0.5
+  safety_supervisor:
+    batteries:
+      min_charge: 14.5
+      min_voltage: 26.4
+      type: BatteryLevel
+    battery_control_board:
+      type: BatteryControlBoard
+    captain:
+      type: Captain
+    check_enabled_abort_and_surface:
+      diagnostic_status_names_to_check:
+      - /safety/safe_depth_altitude
+      - /safety/bag_recorder
+      - /safety/default_param_handler
+      level_if_not_enabled: 3
+      type: CheckEnabled
+    check_enabled_emergency_surface:
+      diagnostic_status_names_to_check:
+      - /control/controller
+      - /control/captain
+      - /control/pilot
+      - /safety/safety_supervisor_checker
+      level_if_not_enabled: 4
+      type: CheckEnabled
+    check_enabled_informative:
+      diagnostic_status_names_to_check:
+      - /control/thrusters
+      - /safety/param_logger
+      - /safety/cola2_version
+      level_if_not_enabled: 1
+      type: CheckEnabled
+    drop_weight_service: ''
+    emergency_surface_setpoints:
+    - -0.3
+    - 0.0
+    - 0.0
+    manual:
+      type: Manual
+    navigator:
+      altitude_data_timeout: 30.0
+      depth_data_timeout: 10.0
+      dvl_data_timeout: 30.0
+      gps_data_timeout: 30.0
+      imu_data_timeout: 10.0
+      min_frequency: 18.0
+      nav_data_timeout: 2.0
+      type: Navigator
+    safety_rule_names:
+    - batteries
+    - battery_control_board
+    - captain
+    - check_enabled_abort_and_surface
+    - check_enabled_emergency_surface
+    - check_enabled_informative
+    - teleoperation
+    - manual
+    - navigator
+    - temperature_batteries
+    - temperature_cpu
+    - temperature_pc_cylinder
+    - virtual_cage
+    - watchdog_timer
+    - water_inside
+    teleoperation:
+      teleoperation_link_timeout: 60.0
+      type: Teleoperation
+    temperature_batteries:
+      diagnostic_status_name: /safety/batteries
+      max_temperature: 55.0
+      type: Temperature
+    temperature_cpu:
+      diagnostic_status_name: /safety/computer_logger
+      max_temperature: 80.0
+      type: Temperature
+    temperature_pc_cylinder:
+      diagnostic_status_name: /safety/battery_control_board
+      max_temperature: 80.0
+      type: Temperature
+    virtual_cage:
+      enables_abort_and_surface: false
+      type: VirtualCage
+    watchdog_timer:
+      timeout: 36000
+      type: WatchdogTimer
+    water_inside:
+      check_battery_housing: false
+      check_extra_housing: false
+      type: CombinedWaterInside
+  sim_auv_nav_sensors:
+    depth_period: 0.2
+    depth_pressure_covariance: 10000.0
+    dvl_period: 0.2
+    dvl_velocity_covariance:
+    - 2.25e-06
+    - 2.25e-06
+    - 2.25e-06
+    gps_period: 1.0
+    gps_position_covariance:
+    - 1.0
+    - 1.0
+    imu_orientation_covariance:
+    - 1.0e-08
+    - 1.0e-08
+    - 1.0e-08
+    imu_period: 0.05
+    output_depth_pressure_covariance: 1000000.0
+    output_dvl_velocity_covariance:
+    - 0.04
+    - 0.04
+    - 0.04
+    output_gps_position_covariance:
+    - 9.0
+    - 9.0
+    output_imu_orientation_covariance:
+    - 0.01
+    - 0.01
+    - 0.01
+    output_usbl_position_covariance: 9.0
+    sea_bottom_depth: 15.0
+    sound_speed: 1500
+    usbl_depth_start: 2.0
+    usbl_period: 0.0
+    usbl_position_covariance: 1.0
+  sim_internal_sensors:
+    battery_consumption_per_second: 0.004
+    initial_battery_level: 98
+  teleoperation:
+    actualize_base_pose: true
+    base_pose:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    max_pos:
+    - 10.0
+    - 10.0
+    - 2.0
+    - 3.14159265359
+    - 3.14159265359
+    - 3.14159265359
+    max_vel:
+    - 0.5
+    - 0.0
+    - 0.35
+    - 0.0
+    - 0.0
+    - 0.3
+    min_pos:
+    - -10.0
+    - -10.0
+    - -2.0
+    - -3.14159265359
+    - -3.14159265359
+    - -3.14159265359
+    min_vel:
+    - -0.25
+    - 0.0
+    - -0.35
+    - 0.0
+    - 0.0
+    - -0.3
+    pose_controlled_axis:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+  virtual_cage:
+    cage_center_east: 0.0
+    cage_center_north: 0.0
+    cage_radius: 500.0
+robot3:
+  captain:
+    disable_no_altitude_goes_up_service: safe_depth_altitude/disable_no_altitude_goes_up
+    enable_no_altitude_goes_up_service: safe_depth_altitude/enable_no_altitude_goes_up
+    idle_no_altitude_goes_up: false
+    max_distance_to_waypoint: 750.0
+    reset_keep_position_on_navigation_jump: true
+    safety_keep_position_depth: 0.0
+    safety_keep_position_goes_to_ned_origin: true
+    vehicle_config_launch_mission_package: cola2_robot3
+  controller:
+    TCM:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    enable_thrusters: true
+    max_force_thruster_negative: 100.0
+    max_force_thruster_positive: 100.0
+    max_velocity_pitch: 0.0
+    max_velocity_roll: 0.0
+    max_velocity_x: 0.5
+    max_velocity_y: 0.0
+    max_velocity_yaw: 0.3
+    max_velocity_z: 0.3
+    max_wrench_Pitch: 17.15
+    max_wrench_Roll: 3.66
+    max_wrench_X: 154.0
+    max_wrench_Y: 0.0
+    max_wrench_Yaw: 14.43
+    max_wrench_Z: 30.0
+    n_thrusters: 3
+    p_heave_fff: 0.0
+    p_heave_i_limit: 0.0
+    p_heave_kp: 1.2
+    p_heave_td: 0.0
+    p_heave_ti: 0.0
+    p_pitch_fff: 0.0
+    p_pitch_i_limit: 0.0
+    p_pitch_kp: 0.0
+    p_pitch_td: 0.0
+    p_pitch_ti: 0.0
+    p_roll_fff: 0.0
+    p_roll_i_limit: 0.0
+    p_roll_kp: 0.0
+    p_roll_td: 0.0
+    p_roll_ti: 0.0
+    p_surge_fff: 0.0
+    p_surge_i_limit: 0.0
+    p_surge_kp: 0.0
+    p_surge_td: 0.0
+    p_surge_ti: 0.0
+    p_sway_fff: 0.0
+    p_sway_i_limit: 0.0
+    p_sway_kp: 0.0
+    p_sway_td: 0.0
+    p_sway_ti: 0.0
+    p_yaw_fff: 0.0
+    p_yaw_i_limit: 0.0
+    p_yaw_kp: 2.5
+    p_yaw_td: 0.0
+    p_yaw_ti: 0.0
+    period: 0.1
+    poly_heave_A: 0.0
+    poly_heave_B: 4.0
+    poly_heave_C: 250.0
+    poly_pitch_A: 0.0
+    poly_pitch_B: 0.0
+    poly_pitch_C: 0.0
+    poly_roll_A: 0.0
+    poly_roll_B: 0.0
+    poly_roll_C: 0.0
+    poly_surge_A: 0.0
+    poly_surge_B: 0.0
+    poly_surge_C: 25.0
+    poly_sway_A: 0.0
+    poly_sway_B: 0.0
+    poly_sway_C: 0.0
+    poly_yaw_A: 0.0
+    poly_yaw_B: 0.0
+    poly_yaw_C: 10.8
+    set_zero_velocity_axes:
+    - true
+    - false
+    - true
+    - false
+    - false
+    - true
+    set_zero_velocity_depth: 1.0
+    t_heave_fff: 0.1
+    t_heave_i_limit: 0.15
+    t_heave_kp: 0.75
+    t_heave_td: 0.0
+    t_heave_ti: 5.0
+    t_pitch_fff: 0.0
+    t_pitch_i_limit: 1.0
+    t_pitch_kp: 0.0
+    t_pitch_td: 0.0
+    t_pitch_ti: 0.0
+    t_roll_fff: 0.0
+    t_roll_i_limit: 1.0
+    t_roll_kp: 0.0
+    t_roll_td: 0.0
+    t_roll_ti: 0.0
+    t_surge_fff: 0.0
+    t_surge_i_limit: 0.25
+    t_surge_kp: 0.25
+    t_surge_td: 0.0
+    t_surge_ti: 20.0
+    t_sway_fff: 0.0
+    t_sway_i_limit: 1.0
+    t_sway_kp: 0.0
+    t_sway_td: 0.0
+    t_sway_ti: 0.0
+    t_yaw_fff: 0.0
+    t_yaw_i_limit: 0.15
+    t_yaw_kp: 2.5
+    t_yaw_td: 0.0
+    t_yaw_ti: 8.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_distance_yaw: 0.51
+  default_param_handler:
+    config_folder: sim_config
+    config_pkg: cola2_turbot
+  diagnostic_aggregator:
+    analyzers:
+      control:
+        name:
+        - controller
+        - teleoperation
+        - captain
+        - pilot
+        - thrusters
+        path: control
+        type: diagnostic_aggregator/GenericAnalyzer
+      navigation:
+        name:
+        - pressure
+        - imu
+        - imu_filter
+        - gps
+        - dvl
+        - navigator
+        path: navigation
+        type: diagnostic_aggregator/GenericAnalyzer
+      safety:
+        name:
+        - batteries
+        - main_control_board
+        - battery_control_board
+        - virtual_cage
+        - safe_depth_altitude
+        - watchdog_timer
+        - comms
+        - modem
+        - computer_logger
+        - param_logger
+        - safety_supervisor_checker
+        - bag_recorder
+        - cola2_version
+        - default_param_handler
+        path: safety
+        type: diagnostic_aggregator/GenericAnalyzer
+    base_path: ''
+    pub_rate: 2.0
+  dynamics:
+    buoyancy: 56.3
+    buoyancy_center:
+    - 0.0
+    - 0.0
+    - -0.02
+    damping:
+    - 0.0
+    - -4.0
+    - -4.0
+    - -1.0
+    - 0.0
+    - 0.0
+    density: 1030.0
+    fins_topic: ''
+    initial_pose:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    initial_velocity:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    mass: 56
+    number_of_thrusters: 3
+    period: 0.05
+    quadratic_damping:
+    - -25.0
+    - -250.0
+    - -250.0
+    - -5.0
+    - -10.8
+    - -10.8
+    radius: 0.115
+    tensor:
+    - 0.4
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thrusters_limiter:
+    - 0.6
+    - 1.0
+    - 1.0
+    thrusters_matrix:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    thrusters_max_step: 0.1
+    thrusters_symmetric: true
+    thrusters_tau: 0.1
+    use_force_topic: false
+    world_frame_id: world_ned
+  logitech_fx10_to_teleoperation:
+    start_service: /sparus2/captain/enable_keep_position_non_holonomic
+    stop_service: /sparus2/captain/disable_all_keep_positions
+  mission_reporter:
+    filter_nodes:
+    - mission_reporter
+    - rosbridge_tcp
+    filter_regex:
+    - Too big acceleration \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\) in time -?\d*\.\d*
+      with new velocity \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\)
+    - DVL update rejected\.
+    reports_folder: logs/mission_reports
+    rosout_include_nanoseconds: true
+    rosout_time_format: '%H:%M:%S'
+  navigator:
+    depth_sensor_offset: 0.0
+    dvl_fallback_delay: 0.0
+    dvl_max_v: 2.5
+    enable_debug: false
+    gps_samples_to_init: 4
+    initial_state_covariance:
+    - 2.0
+    - 2.0
+    - 0.5
+    - 0.04
+    - 0.04
+    - 0.04
+    initialize_depth_sensor_offset: false
+    initialize_filter_from_gps: true
+    min_diagnostics_frequency: 25.0
+    ned_latitude: 39.54333
+    ned_longitude: 2.37794
+    prediction_model_covariance:
+    - 0.02
+    - 0.02
+    - 0.02
+    surface_to_depth_sensor_distance: 0.05
+    use_depth_data: true
+    use_dvl_data: true
+    use_gps_data: true
+    use_usbl_data: true
+    water_density: 1030.0
+  pilot:
+    anchor:
+      kp: 0.1
+      max_surge_velocity: 0.3
+      min_surge_velocity: -0.1
+      radius: 1.0
+    section:
+      delta: 6.0
+      distance_to_max_velocity: 5.0
+      max_surge_velocity: 2.5
+      min_surge_velocity: 0.2
+      tolerance_z: 1.0
+  robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+    \ -->\n<!-- |    This document was autogenerated by xacro from /home/uib/MMRS_ws/src/MMRS_stack/turbot_description/urdf/payload.urdf.xacro\
+    \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED              \
+    \                   | -->\n<!-- ===================================================================================\
+    \ -->\n<robot name=\"turbot\">\n  <!-- Base link -->\n  <link name=\"robot3/base_link\"\
+    >\n    <visual>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <geometry>\n\
+    \        <mesh filename=\"package://turbot_description/meshes/turbot.dae\" scale=\"\
+    1 1 1\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!-- Link -->\n  <link\
+    \ name=\"robot3/dvl\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0\
+    \ 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+    0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+    \ Joint -->\n  <joint name=\"robot3/base_link_to_dvl_joint\" type=\"fixed\">\n\
+    \    <parent link=\"robot3/base_link\"/>\n    <child link=\"robot3/dvl\"/>\n \
+    \   <origin rpy=\"3.141593 0.000000 2.356194\" xyz=\"-0.414500 0.000000 0.110000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot3/dvl_altitude\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot3/dvl_to_dvl_altitude_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot3/dvl\"/>\n    <child link=\"robot3/dvl_altitude\"\
+    />\n    <origin rpy=\"0.000000 1.570796 0.000000\" xyz=\"0.000000 0.000000 0.000000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot3/gps\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot3/base_link_to_gps_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot3/base_link\"/>\n    <child link=\"\
+    robot3/gps\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"-0.390000\
+    \ 0.000000 -0.360000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot3/imu\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot3/base_link_to_imu_joint\" type=\"fixed\">\n    <parent link=\"robot3/base_link\"\
+    />\n    <child link=\"robot3/imu\"/>\n    <origin rpy=\"1.570796 0.000000 1.570796\"\
+    \ xyz=\"0.363770 -0.020930 -0.084900\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+    \ name=\"robot3/imu_filter\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+    0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\"\
+    \ ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+    \  <!-- Joint -->\n  <joint name=\"robot3/base_link_to_imu_filter_joint\" type=\"\
+    fixed\">\n    <parent link=\"robot3/base_link\"/>\n    <child link=\"robot3/imu_filter\"\
+    />\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.363770 -0.020930 -0.084900\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot3/modem\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot3/base_link_to_modem_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot3/base_link\"/>\n    <child link=\"\
+    robot3/modem\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.437000\
+    \ 0.000000 -0.130000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot3/pressure\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot3/base_link_to_pressure_joint\" type=\"fixed\">\n    <parent link=\"robot3/base_link\"\
+    />\n    <child link=\"robot3/pressure\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 0.000000\" xyz=\"0.387000 0.000000 -0.033000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot3/thruster_0\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot3/base_link_to_thruster_0_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot3/base_link\"/>\n    <child link=\"\
+    robot3/thruster_0\"/>\n    <origin rpy=\"0.000000 -1.570796 0.000000\" xyz=\"\
+    0.000000 0.000000 0.080000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot3/thruster_1\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot3/base_link_to_thruster_1_joint\" type=\"fixed\">\n    <parent link=\"robot3/base_link\"\
+    />\n    <child link=\"robot3/thruster_1\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 3.141593\" xyz=\"-0.590000 0.170000 0.000000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot3/thruster_2\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot3/base_link_to_thruster_2_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot3/base_link\"/>\n    <child link=\"\
+    robot3/thruster_2\"/>\n    <origin rpy=\"0.000000 0.000000 3.141593\" xyz=\"-0.590000\
+    \ -0.170000 0.000000\"/>\n  </joint>\n</robot>\n\n"
+  safe_depth_altitude:
+    max_depth: 200.0
+    min_altitude: 1.0
+    min_altitude_starts_at_depth: 0.5
+  safety_supervisor:
+    batteries:
+      min_charge: 14.5
+      min_voltage: 26.4
+      type: BatteryLevel
+    battery_control_board:
+      type: BatteryControlBoard
+    captain:
+      type: Captain
+    check_enabled_abort_and_surface:
+      diagnostic_status_names_to_check:
+      - /safety/safe_depth_altitude
+      - /safety/bag_recorder
+      - /safety/default_param_handler
+      level_if_not_enabled: 3
+      type: CheckEnabled
+    check_enabled_emergency_surface:
+      diagnostic_status_names_to_check:
+      - /control/controller
+      - /control/captain
+      - /control/pilot
+      - /safety/safety_supervisor_checker
+      level_if_not_enabled: 4
+      type: CheckEnabled
+    check_enabled_informative:
+      diagnostic_status_names_to_check:
+      - /control/thrusters
+      - /safety/param_logger
+      - /safety/cola2_version
+      level_if_not_enabled: 1
+      type: CheckEnabled
+    drop_weight_service: ''
+    emergency_surface_setpoints:
+    - -0.3
+    - 0.0
+    - 0.0
+    manual:
+      type: Manual
+    navigator:
+      altitude_data_timeout: 30.0
+      depth_data_timeout: 10.0
+      dvl_data_timeout: 30.0
+      gps_data_timeout: 30.0
+      imu_data_timeout: 10.0
+      min_frequency: 18.0
+      nav_data_timeout: 2.0
+      type: Navigator
+    safety_rule_names:
+    - batteries
+    - battery_control_board
+    - captain
+    - check_enabled_abort_and_surface
+    - check_enabled_emergency_surface
+    - check_enabled_informative
+    - teleoperation
+    - manual
+    - navigator
+    - temperature_batteries
+    - temperature_cpu
+    - temperature_pc_cylinder
+    - virtual_cage
+    - watchdog_timer
+    - water_inside
+    teleoperation:
+      teleoperation_link_timeout: 60.0
+      type: Teleoperation
+    temperature_batteries:
+      diagnostic_status_name: /safety/batteries
+      max_temperature: 55.0
+      type: Temperature
+    temperature_cpu:
+      diagnostic_status_name: /safety/computer_logger
+      max_temperature: 80.0
+      type: Temperature
+    temperature_pc_cylinder:
+      diagnostic_status_name: /safety/battery_control_board
+      max_temperature: 80.0
+      type: Temperature
+    virtual_cage:
+      enables_abort_and_surface: false
+      type: VirtualCage
+    watchdog_timer:
+      timeout: 36000
+      type: WatchdogTimer
+    water_inside:
+      check_battery_housing: false
+      check_extra_housing: false
+      type: CombinedWaterInside
+  sim_auv_nav_sensors:
+    depth_period: 0.2
+    depth_pressure_covariance: 10000.0
+    dvl_period: 0.2
+    dvl_velocity_covariance:
+    - 2.25e-06
+    - 2.25e-06
+    - 2.25e-06
+    gps_period: 1.0
+    gps_position_covariance:
+    - 1.0
+    - 1.0
+    imu_orientation_covariance:
+    - 1.0e-08
+    - 1.0e-08
+    - 1.0e-08
+    imu_period: 0.05
+    output_depth_pressure_covariance: 1000000.0
+    output_dvl_velocity_covariance:
+    - 0.04
+    - 0.04
+    - 0.04
+    output_gps_position_covariance:
+    - 9.0
+    - 9.0
+    output_imu_orientation_covariance:
+    - 0.01
+    - 0.01
+    - 0.01
+    output_usbl_position_covariance: 9.0
+    sea_bottom_depth: 15.0
+    sound_speed: 1500
+    usbl_depth_start: 2.0
+    usbl_period: 0.0
+    usbl_position_covariance: 1.0
+  sim_internal_sensors:
+    battery_consumption_per_second: 0.004
+    initial_battery_level: 98
+  teleoperation:
+    actualize_base_pose: true
+    base_pose:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    max_pos:
+    - 10.0
+    - 10.0
+    - 2.0
+    - 3.14159265359
+    - 3.14159265359
+    - 3.14159265359
+    max_vel:
+    - 0.5
+    - 0.0
+    - 0.35
+    - 0.0
+    - 0.0
+    - 0.3
+    min_pos:
+    - -10.0
+    - -10.0
+    - -2.0
+    - -3.14159265359
+    - -3.14159265359
+    - -3.14159265359
+    min_vel:
+    - -0.25
+    - 0.0
+    - -0.35
+    - 0.0
+    - 0.0
+    - -0.3
+    pose_controlled_axis:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+  virtual_cage:
+    cage_center_east: 0.0
+    cage_center_north: 0.0
+    cage_radius: 500.0
+robot4:
+  captain:
+    disable_no_altitude_goes_up_service: safe_depth_altitude/disable_no_altitude_goes_up
+    enable_no_altitude_goes_up_service: safe_depth_altitude/enable_no_altitude_goes_up
+    idle_no_altitude_goes_up: false
+    max_distance_to_waypoint: 750.0
+    reset_keep_position_on_navigation_jump: true
+    safety_keep_position_depth: 0.0
+    safety_keep_position_goes_to_ned_origin: true
+    vehicle_config_launch_mission_package: cola2_robot4
+  controller:
+    TCM:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    enable_thrusters: true
+    max_force_thruster_negative: 100.0
+    max_force_thruster_positive: 100.0
+    max_velocity_pitch: 0.0
+    max_velocity_roll: 0.0
+    max_velocity_x: 0.5
+    max_velocity_y: 0.0
+    max_velocity_yaw: 0.3
+    max_velocity_z: 0.3
+    max_wrench_Pitch: 17.15
+    max_wrench_Roll: 3.66
+    max_wrench_X: 154.0
+    max_wrench_Y: 0.0
+    max_wrench_Yaw: 14.43
+    max_wrench_Z: 30.0
+    n_thrusters: 3
+    p_heave_fff: 0.0
+    p_heave_i_limit: 0.0
+    p_heave_kp: 1.2
+    p_heave_td: 0.0
+    p_heave_ti: 0.0
+    p_pitch_fff: 0.0
+    p_pitch_i_limit: 0.0
+    p_pitch_kp: 0.0
+    p_pitch_td: 0.0
+    p_pitch_ti: 0.0
+    p_roll_fff: 0.0
+    p_roll_i_limit: 0.0
+    p_roll_kp: 0.0
+    p_roll_td: 0.0
+    p_roll_ti: 0.0
+    p_surge_fff: 0.0
+    p_surge_i_limit: 0.0
+    p_surge_kp: 0.0
+    p_surge_td: 0.0
+    p_surge_ti: 0.0
+    p_sway_fff: 0.0
+    p_sway_i_limit: 0.0
+    p_sway_kp: 0.0
+    p_sway_td: 0.0
+    p_sway_ti: 0.0
+    p_yaw_fff: 0.0
+    p_yaw_i_limit: 0.0
+    p_yaw_kp: 2.5
+    p_yaw_td: 0.0
+    p_yaw_ti: 0.0
+    period: 0.1
+    poly_heave_A: 0.0
+    poly_heave_B: 4.0
+    poly_heave_C: 250.0
+    poly_pitch_A: 0.0
+    poly_pitch_B: 0.0
+    poly_pitch_C: 0.0
+    poly_roll_A: 0.0
+    poly_roll_B: 0.0
+    poly_roll_C: 0.0
+    poly_surge_A: 0.0
+    poly_surge_B: 0.0
+    poly_surge_C: 25.0
+    poly_sway_A: 0.0
+    poly_sway_B: 0.0
+    poly_sway_C: 0.0
+    poly_yaw_A: 0.0
+    poly_yaw_B: 0.0
+    poly_yaw_C: 10.8
+    set_zero_velocity_axes:
+    - true
+    - false
+    - true
+    - false
+    - false
+    - true
+    set_zero_velocity_depth: 1.0
+    t_heave_fff: 0.1
+    t_heave_i_limit: 0.15
+    t_heave_kp: 0.75
+    t_heave_td: 0.0
+    t_heave_ti: 5.0
+    t_pitch_fff: 0.0
+    t_pitch_i_limit: 1.0
+    t_pitch_kp: 0.0
+    t_pitch_td: 0.0
+    t_pitch_ti: 0.0
+    t_roll_fff: 0.0
+    t_roll_i_limit: 1.0
+    t_roll_kp: 0.0
+    t_roll_td: 0.0
+    t_roll_ti: 0.0
+    t_surge_fff: 0.0
+    t_surge_i_limit: 0.25
+    t_surge_kp: 0.25
+    t_surge_td: 0.0
+    t_surge_ti: 20.0
+    t_sway_fff: 0.0
+    t_sway_i_limit: 1.0
+    t_sway_kp: 0.0
+    t_sway_td: 0.0
+    t_sway_ti: 0.0
+    t_yaw_fff: 0.0
+    t_yaw_i_limit: 0.15
+    t_yaw_kp: 2.5
+    t_yaw_td: 0.0
+    t_yaw_ti: 8.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_distance_yaw: 0.51
+  default_param_handler:
+    config_folder: sim_config
+    config_pkg: cola2_turbot
+  diagnostic_aggregator:
+    analyzers:
+      control:
+        name:
+        - controller
+        - teleoperation
+        - captain
+        - pilot
+        - thrusters
+        path: control
+        type: diagnostic_aggregator/GenericAnalyzer
+      navigation:
+        name:
+        - pressure
+        - imu
+        - imu_filter
+        - gps
+        - dvl
+        - navigator
+        path: navigation
+        type: diagnostic_aggregator/GenericAnalyzer
+      safety:
+        name:
+        - batteries
+        - main_control_board
+        - battery_control_board
+        - virtual_cage
+        - safe_depth_altitude
+        - watchdog_timer
+        - comms
+        - modem
+        - computer_logger
+        - param_logger
+        - safety_supervisor_checker
+        - bag_recorder
+        - cola2_version
+        - default_param_handler
+        path: safety
+        type: diagnostic_aggregator/GenericAnalyzer
+    base_path: ''
+    pub_rate: 2.0
+  dynamics:
+    buoyancy: 56.3
+    buoyancy_center:
+    - 0.0
+    - 0.0
+    - -0.02
+    damping:
+    - 0.0
+    - -4.0
+    - -4.0
+    - -1.0
+    - 0.0
+    - 0.0
+    density: 1030.0
+    fins_topic: ''
+    initial_pose:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    initial_velocity:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    mass: 56
+    number_of_thrusters: 3
+    period: 0.05
+    quadratic_damping:
+    - -25.0
+    - -250.0
+    - -250.0
+    - -5.0
+    - -10.8
+    - -10.8
+    radius: 0.115
+    tensor:
+    - 0.4
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 30.0
+    thruster_2_max_force_positive: 71.5
+    thruster_2_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_2_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thruster_3_max_force_negative: 30.0
+    thruster_3_max_force_positive: 71.5
+    thruster_3_poly_negative:
+    - 0.0772
+    - 0.1186
+    - -0.0139
+    - 0.00092
+    - -2.81e-05
+    - 3.22e-07
+    thruster_3_poly_positive:
+    - 0.06815
+    - 0.05144
+    - -0.00278
+    - 8.48e-05
+    - -1.18e-06
+    - 6.12e-09
+    thrusters_limiter:
+    - 0.6
+    - 1.0
+    - 1.0
+    thrusters_matrix:
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.16783
+    - 0.16783
+    thrusters_max_step: 0.1
+    thrusters_symmetric: true
+    thrusters_tau: 0.1
+    use_force_topic: false
+    world_frame_id: world_ned
+  logitech_fx10_to_teleoperation:
+    start_service: /sparus2/captain/enable_keep_position_non_holonomic
+    stop_service: /sparus2/captain/disable_all_keep_positions
+  mission_reporter:
+    filter_nodes:
+    - mission_reporter
+    - rosbridge_tcp
+    filter_regex:
+    - Too big acceleration \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\) in time -?\d*\.\d*
+      with new velocity \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\)
+    - DVL update rejected\.
+    reports_folder: logs/mission_reports
+    rosout_include_nanoseconds: true
+    rosout_time_format: '%H:%M:%S'
+  navigator:
+    depth_sensor_offset: 0.0
+    dvl_fallback_delay: 0.0
+    dvl_max_v: 2.5
+    enable_debug: false
+    gps_samples_to_init: 4
+    initial_state_covariance:
+    - 2.0
+    - 2.0
+    - 0.5
+    - 0.04
+    - 0.04
+    - 0.04
+    initialize_depth_sensor_offset: false
+    initialize_filter_from_gps: true
+    min_diagnostics_frequency: 25.0
+    ned_latitude: 39.54333
+    ned_longitude: 2.37794
+    prediction_model_covariance:
+    - 0.02
+    - 0.02
+    - 0.02
+    surface_to_depth_sensor_distance: 0.05
+    use_depth_data: true
+    use_dvl_data: true
+    use_gps_data: true
+    use_usbl_data: true
+    water_density: 1030.0
+  pilot:
+    anchor:
+      kp: 0.1
+      max_surge_velocity: 0.3
+      min_surge_velocity: -0.1
+      radius: 1.0
+    section:
+      delta: 6.0
+      distance_to_max_velocity: 5.0
+      max_surge_velocity: 2.5
+      min_surge_velocity: 0.2
+      tolerance_z: 1.0
+  robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+    \ -->\n<!-- |    This document was autogenerated by xacro from /home/uib/MMRS_ws/src/MMRS_stack/turbot_description/urdf/payload.urdf.xacro\
+    \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED              \
+    \                   | -->\n<!-- ===================================================================================\
+    \ -->\n<robot name=\"turbot\">\n  <!-- Base link -->\n  <link name=\"robot4/base_link\"\
+    >\n    <visual>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <geometry>\n\
+    \        <mesh filename=\"package://turbot_description/meshes/turbot.dae\" scale=\"\
+    1 1 1\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!-- Link -->\n  <link\
+    \ name=\"robot4/dvl\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0\
+    \ 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+    0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+    \ Joint -->\n  <joint name=\"robot4/base_link_to_dvl_joint\" type=\"fixed\">\n\
+    \    <parent link=\"robot4/base_link\"/>\n    <child link=\"robot4/dvl\"/>\n \
+    \   <origin rpy=\"3.141593 0.000000 2.356194\" xyz=\"-0.414500 0.000000 0.110000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot4/dvl_altitude\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot4/dvl_to_dvl_altitude_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot4/dvl\"/>\n    <child link=\"robot4/dvl_altitude\"\
+    />\n    <origin rpy=\"0.000000 1.570796 0.000000\" xyz=\"0.000000 0.000000 0.000000\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot4/gps\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot4/base_link_to_gps_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot4/base_link\"/>\n    <child link=\"\
+    robot4/gps\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"-0.390000\
+    \ 0.000000 -0.360000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot4/imu\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot4/base_link_to_imu_joint\" type=\"fixed\">\n    <parent link=\"robot4/base_link\"\
+    />\n    <child link=\"robot4/imu\"/>\n    <origin rpy=\"1.570796 0.000000 1.570796\"\
+    \ xyz=\"0.363770 -0.020930 -0.084900\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+    \ name=\"robot4/imu_filter\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+    0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\"\
+    \ ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+    \  <!-- Joint -->\n  <joint name=\"robot4/base_link_to_imu_filter_joint\" type=\"\
+    fixed\">\n    <parent link=\"robot4/base_link\"/>\n    <child link=\"robot4/imu_filter\"\
+    />\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.363770 -0.020930 -0.084900\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot4/modem\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot4/base_link_to_modem_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot4/base_link\"/>\n    <child link=\"\
+    robot4/modem\"/>\n    <origin rpy=\"0.000000 0.000000 0.000000\" xyz=\"0.437000\
+    \ 0.000000 -0.130000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot4/pressure\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot4/base_link_to_pressure_joint\" type=\"fixed\">\n    <parent link=\"robot4/base_link\"\
+    />\n    <child link=\"robot4/pressure\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 0.000000\" xyz=\"0.387000 0.000000 -0.033000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot4/thruster_0\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot4/base_link_to_thruster_0_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot4/base_link\"/>\n    <child link=\"\
+    robot4/thruster_0\"/>\n    <origin rpy=\"0.000000 -1.570796 0.000000\" xyz=\"\
+    0.000000 0.000000 0.080000\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot4/thruster_1\"\
+    >\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"\
+    0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"\
+    0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"\
+    robot4/base_link_to_thruster_1_joint\" type=\"fixed\">\n    <parent link=\"robot4/base_link\"\
+    />\n    <child link=\"robot4/thruster_1\"/>\n    <origin rpy=\"0.000000 0.000000\
+    \ 3.141593\" xyz=\"-0.590000 0.170000 0.000000\"/>\n  </joint>\n  <!-- Link -->\n\
+    \  <link name=\"robot4/thruster_2\">\n    <inertial>\n      <origin rpy=\"0 0\
+    \ 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\"\
+    \ ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot4/base_link_to_thruster_2_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot4/base_link\"/>\n    <child link=\"\
+    robot4/thruster_2\"/>\n    <origin rpy=\"0.000000 0.000000 3.141593\" xyz=\"-0.590000\
+    \ -0.170000 0.000000\"/>\n  </joint>\n</robot>\n\n"
+  safe_depth_altitude:
+    max_depth: 200.0
+    min_altitude: 1.0
+    min_altitude_starts_at_depth: 0.5
+  safety_supervisor:
+    batteries:
+      min_charge: 14.5
+      min_voltage: 26.4
+      type: BatteryLevel
+    battery_control_board:
+      type: BatteryControlBoard
+    captain:
+      type: Captain
+    check_enabled_abort_and_surface:
+      diagnostic_status_names_to_check:
+      - /safety/safe_depth_altitude
+      - /safety/bag_recorder
+      - /safety/default_param_handler
+      level_if_not_enabled: 3
+      type: CheckEnabled
+    check_enabled_emergency_surface:
+      diagnostic_status_names_to_check:
+      - /control/controller
+      - /control/captain
+      - /control/pilot
+      - /safety/safety_supervisor_checker
+      level_if_not_enabled: 4
+      type: CheckEnabled
+    check_enabled_informative:
+      diagnostic_status_names_to_check:
+      - /control/thrusters
+      - /safety/param_logger
+      - /safety/cola2_version
+      level_if_not_enabled: 1
+      type: CheckEnabled
+    drop_weight_service: ''
+    emergency_surface_setpoints:
+    - -0.3
+    - 0.0
+    - 0.0
+    manual:
+      type: Manual
+    navigator:
+      altitude_data_timeout: 30.0
+      depth_data_timeout: 10.0
+      dvl_data_timeout: 30.0
+      gps_data_timeout: 30.0
+      imu_data_timeout: 10.0
+      min_frequency: 18.0
+      nav_data_timeout: 2.0
+      type: Navigator
+    safety_rule_names:
+    - batteries
+    - battery_control_board
+    - captain
+    - check_enabled_abort_and_surface
+    - check_enabled_emergency_surface
+    - check_enabled_informative
+    - teleoperation
+    - manual
+    - navigator
+    - temperature_batteries
+    - temperature_cpu
+    - temperature_pc_cylinder
+    - virtual_cage
+    - watchdog_timer
+    - water_inside
+    teleoperation:
+      teleoperation_link_timeout: 60.0
+      type: Teleoperation
+    temperature_batteries:
+      diagnostic_status_name: /safety/batteries
+      max_temperature: 55.0
+      type: Temperature
+    temperature_cpu:
+      diagnostic_status_name: /safety/computer_logger
+      max_temperature: 80.0
+      type: Temperature
+    temperature_pc_cylinder:
+      diagnostic_status_name: /safety/battery_control_board
+      max_temperature: 80.0
+      type: Temperature
+    virtual_cage:
+      enables_abort_and_surface: false
+      type: VirtualCage
+    watchdog_timer:
+      timeout: 36000
+      type: WatchdogTimer
+    water_inside:
+      check_battery_housing: false
+      check_extra_housing: false
+      type: CombinedWaterInside
+  sim_auv_nav_sensors:
+    depth_period: 0.2
+    depth_pressure_covariance: 10000.0
+    dvl_period: 0.2
+    dvl_velocity_covariance:
+    - 2.25e-06
+    - 2.25e-06
+    - 2.25e-06
+    gps_period: 1.0
+    gps_position_covariance:
+    - 1.0
+    - 1.0
+    imu_orientation_covariance:
+    - 1.0e-08
+    - 1.0e-08
+    - 1.0e-08
+    imu_period: 0.05
+    output_depth_pressure_covariance: 1000000.0
+    output_dvl_velocity_covariance:
+    - 0.04
+    - 0.04
+    - 0.04
+    output_gps_position_covariance:
+    - 9.0
+    - 9.0
+    output_imu_orientation_covariance:
+    - 0.01
+    - 0.01
+    - 0.01
+    output_usbl_position_covariance: 9.0
+    sea_bottom_depth: 15.0
+    sound_speed: 1500
+    usbl_depth_start: 2.0
+    usbl_period: 0.0
+    usbl_position_covariance: 1.0
+  sim_internal_sensors:
+    battery_consumption_per_second: 0.004
+    initial_battery_level: 98
+  teleoperation:
+    actualize_base_pose: true
+    base_pose:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    max_pos:
+    - 10.0
+    - 10.0
+    - 2.0
+    - 3.14159265359
+    - 3.14159265359
+    - 3.14159265359
+    max_vel:
+    - 0.5
+    - 0.0
+    - 0.35
+    - 0.0
+    - 0.0
+    - 0.3
+    min_pos:
+    - -10.0
+    - -10.0
+    - -2.0
+    - -3.14159265359
+    - -3.14159265359
+    - -3.14159265359
+    min_vel:
+    - -0.25
+    - 0.0
+    - -0.35
+    - 0.0
+    - 0.0
+    - -0.3
+    pose_controlled_axis:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+  virtual_cage:
+    cage_center_east: 0.0
+    cage_center_north: 0.0
+    cage_radius: 500.0
+robot5:
+  captain:
+    disable_no_altitude_goes_up_service: controller/enable_thrusters
+    enable_no_altitude_goes_up_service: controller/enable_thrusters
+    idle_no_altitude_goes_up: false
+    max_distance_to_waypoint: 750.0
+    reset_keep_position_on_navigation_jump: true
+    safety_keep_position_depth: 0.0
+    safety_keep_position_goes_to_ned_origin: false
+    vehicle_config_launch_mission_package: cola2_robot5
+  controller:
+    TCM:
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.45
+    - 0.45
+    enable_thrusters: true
+    max_force_thruster_negative: 100.0
+    max_force_thruster_positive: 100.0
+    max_velocity_pitch: 0.0
+    max_velocity_roll: 0.0
+    max_velocity_x: 0.7
+    max_velocity_y: 0.0
+    max_velocity_yaw: 0.45
+    max_velocity_z: 0.0
+    max_wrench_Pitch: 17.15
+    max_wrench_Roll: 3.66
+    max_wrench_X: 154.0
+    max_wrench_Y: 0.0
+    max_wrench_Yaw: 14.43
+    max_wrench_Z: 30.0
+    n_thrusters: 2
+    p_heave_fff: 0.0
+    p_heave_i_limit: 0.0
+    p_heave_kp: 1.2
+    p_heave_td: 0.0
+    p_heave_ti: 0.0
+    p_pitch_fff: 0.0
+    p_pitch_i_limit: 0.0
+    p_pitch_kp: 0.0
+    p_pitch_td: 0.0
+    p_pitch_ti: 0.0
+    p_roll_fff: 0.0
+    p_roll_i_limit: 0.0
+    p_roll_kp: 0.0
+    p_roll_td: 0.0
+    p_roll_ti: 0.0
+    p_surge_fff: 0.0
+    p_surge_i_limit: 0.0
+    p_surge_kp: 0.0
+    p_surge_td: 0.0
+    p_surge_ti: 0.0
+    p_sway_fff: 0.0
+    p_sway_i_limit: 0.0
+    p_sway_kp: 0.0
+    p_sway_td: 0.0
+    p_sway_ti: 0.0
+    p_yaw_fff: 0.0
+    p_yaw_i_limit: 0.0
+    p_yaw_kp: 2.5
+    p_yaw_td: 0.0
+    p_yaw_ti: 0.0
+    period: 0.1
+    poly_heave_A: 0.0
+    poly_heave_B: 4.0
+    poly_heave_C: 250.0
+    poly_pitch_A: 0.0
+    poly_pitch_B: 0.0
+    poly_pitch_C: 0.0
+    poly_roll_A: 0.0
+    poly_roll_B: 0.0
+    poly_roll_C: 0.0
+    poly_surge_A: 0.0
+    poly_surge_B: 0.0
+    poly_surge_C: 25.0
+    poly_sway_A: 0.0
+    poly_sway_B: 0.0
+    poly_sway_C: 0.0
+    poly_yaw_A: 0.0
+    poly_yaw_B: 0.0
+    poly_yaw_C: 10.8
+    set_zero_velocity_axes:
+    - true
+    - false
+    - false
+    - false
+    - false
+    - true
+    set_zero_velocity_depth: 1.0
+    t_heave_fff: 0.1
+    t_heave_i_limit: 0.15
+    t_heave_kp: 0.75
+    t_heave_td: 0.0
+    t_heave_ti: 5.0
+    t_pitch_fff: 0.0
+    t_pitch_i_limit: 1.0
+    t_pitch_kp: 0.0
+    t_pitch_td: 0.0
+    t_pitch_ti: 0.0
+    t_roll_fff: 0.0
+    t_roll_i_limit: 1.0
+    t_roll_kp: 0.0
+    t_roll_td: 0.0
+    t_roll_ti: 0.0
+    t_surge_fff: 0.0
+    t_surge_i_limit: 0.25
+    t_surge_kp: 0.25
+    t_surge_td: 0.0
+    t_surge_ti: 20.0
+    t_sway_fff: 0.0
+    t_sway_i_limit: 1.0
+    t_sway_kp: 0.0
+    t_sway_td: 0.0
+    t_sway_ti: 0.0
+    t_yaw_fff: 0.0
+    t_yaw_i_limit: 0.15
+    t_yaw_kp: 2.5
+    t_yaw_td: 0.0
+    t_yaw_ti: 8.0
+    thruster_1_max_force_negative: 28.5
+    thruster_1_max_force_positive: 55.0
+    thruster_1_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_1_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_2_max_force_negative: 28.5
+    thruster_2_max_force_positive: 55.0
+    thruster_2_poly_negative:
+    - 0.022
+    - 0.176
+    - -0.0261
+    - 0.00199
+    - -7.026e-05
+    - 9.26e-07
+    thruster_2_poly_positive:
+    - 0.0499
+    - 0.0701
+    - -0.00581
+    - 0.000247
+    - -4.67e-06
+    - 3.25e-08
+    thruster_distance_yaw: 0.51
+  default_param_handler:
+    config_folder: sim_config
+    config_pkg: cola2_xiroi
+  diagnostic_aggregator:
+    analyzers:
+      control:
+        name:
+        - controller
+        - teleoperation
+        - captain
+        - pilot
+        - thrusters
+        path: control
+        type: diagnostic_aggregator/GenericAnalyzer
+      navigation:
+        name:
+        - pressure
+        - imu
+        - imu_filter
+        - gps
+        - dvl
+        - navigator
+        path: navigation
+        type: diagnostic_aggregator/GenericAnalyzer
+      safety:
+        name:
+        - batteries
+        - main_control_board
+        - battery_control_board
+        - virtual_cage
+        - safe_depth_altitude
+        - watchdog_timer
+        - comms
+        - modem
+        - computer_logger
+        - param_logger
+        - safety_supervisor_checker
+        - bag_recorder
+        - cola2_version
+        - default_param_handler
+        path: safety
+        type: diagnostic_aggregator/GenericAnalyzer
+    base_path: ''
+    pub_rate: 2.0
+  dynamics:
+    buoyancy: 56.3
+    buoyancy_center:
+    - 0.0
+    - 0.0
+    - -0.02
+    damping:
+    - 0.0
+    - -4.0
+    - -4.0
+    - -1.0
+    - 0.0
+    - 0.0
+    density: 1030.0
+    fins_topic: ''
+    initial_pose:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    initial_velocity:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    mass: 56
+    number_of_thrusters: 2
+    period: 0.05
+    quadratic_damping:
+    - -25.0
+    - -250.0
+    - -250.0
+    - -5.0
+    - -10.8
+    - -10.8
+    radius: 0.4
+    tensor:
+    - 0.4
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 18.0
+    thruster_1_max_force_negative: 47
+    thruster_1_max_force_positive: 64
+    thruster_1_poly_negative:
+    - -0.0338261
+    - 0.0506817
+    - 0.00231313
+    - 8.52004e-05
+    - 1.64995e-06
+    - 1.2464e-08
+    thruster_1_poly_positive:
+    - 0.0473783
+    - 0.0439118
+    - -0.00165504
+    - 4.53733e-05
+    - -6.42983e-07
+    - 3.55075e-09
+    thruster_2_max_force_negative: 47
+    thruster_2_max_force_positive: 64
+    thruster_2_poly_negative:
+    - -0.0338261
+    - 0.0506817
+    - 0.00231313
+    - 8.52004e-05
+    - 1.64995e-06
+    - 1.2464e-08
+    thruster_2_poly_positive:
+    - 0.0473783
+    - 0.0439118
+    - -0.00165504
+    - 4.53733e-05
+    - -6.42983e-07
+    - 3.55075e-09
+    thrusters_limiter:
+    - 1.0
+    - 1.0
+    thrusters_matrix:
+    - 1.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - -0.45
+    - 0.45
+    thrusters_max_step: 0.1
+    thrusters_symmetric: true
+    thrusters_tau: 0.1
+    use_force_topic: false
+    world_frame_id: world_ned
+  logitech_fx10_to_teleoperation:
+    start_service: /xiroi/captain/enable_keep_position_non_holonomic
+    stop_service: /xiroi/captain/disable_all_keep_positions
+  mission_reporter:
+    filter_nodes:
+    - mission_reporter
+    - rosbridge_tcp
+    filter_regex:
+    - Too big acceleration \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\) in time -?\d*\.\d*
+      with new velocity \(-?\d*\.\d*, -?\d*\.\d*, -?\d*\.\d*\)
+    - DVL update rejected\.
+    reports_folder: logs/mission_reports
+    rosout_include_nanoseconds: true
+    rosout_time_format: '%H:%M:%S'
+  navigator:
+    depth_sensor_offset: 10.0
+    dvl_fallback_delay: 0.0
+    dvl_max_v: 2.5
+    enable_debug: false
+    gps_samples_to_init: 4
+    initial_state_covariance:
+    - 2.0
+    - 2.0
+    - 0.5
+    - 0.04
+    - 0.04
+    - 0.04
+    initialize_depth_sensor_offset: true
+    initialize_filter_from_gps: true
+    min_diagnostics_frequency: 25.0
+    ned_latitude: 39.54333
+    ned_longitude: 2.37794
+    prediction_model_covariance:
+    - 0.02
+    - 0.02
+    - 0.02
+    surface_to_depth_sensor_distance: 0.05
+    use_depth_data: false
+    use_dvl_data: false
+    use_gps_data: true
+    use_usbl_data: false
+    water_density: 1030.0
+  pilot:
+    anchor:
+      kp: 0.1
+      max_surge_velocity: 0.3
+      min_surge_velocity: -0.1
+      radius: 1.0
+    section:
+      delta: 6.0
+      distance_to_max_velocity: 5.0
+      max_surge_velocity: 2.5
+      min_surge_velocity: 0.2
+      tolerance_z: 1.0
+  robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+    \ -->\n<!-- |    This document was autogenerated by xacro from /home/uib/MMRS_ws/src/MMRS_stack/xiroi_description/urdf/payload.urdf.xacro\
+    \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED              \
+    \                   | -->\n<!-- ===================================================================================\
+    \ -->\n<robot name=\"xiroi\">\n  <!-- Base link -->\n  <link name=\"robot5/base_link\"\
+    >\n    <visual>\n      <origin rpy=\"-1.57 0 -1.57\" xyz=\"-1 -1.2 0\"/>\n   \
+    \   <geometry>\n        <mesh filename=\"package://xiroi_description/meshes/xiroi.dae\"\
+    \ scale=\"0.011 0.011 0.011\"/>\n      </geometry>\n    </visual>\n  </link>\n\
+    \  <!-- Link -->\n  <link name=\"robot5/usbl\">\n    <inertial>\n      <origin\
+    \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+    1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_usbl_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/usbl\"/>\n    <origin rpy=\"0 0 0\" xyz=\"0.32 0 0.8\"/>\n  </joint>\n\
+    \  <!-- Link -->\n  <link name=\"robot5/dvl_altitude\">\n    <inertial>\n    \
+    \  <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia\
+    \ ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n\
+    \    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/dvl_to_dvl_altitude_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/dvl\"/>\n    <child link=\"robot5/dvl_altitude\"\
+    />\n    <origin rpy=\"0.0000 1.5708 0.0000\" xyz=\"0.000 0.000 0.000\"/>\n  </joint>\n\
+    \  <!-- Link -->\n  <link name=\"robot5/pressure\">\n    <inertial>\n      <origin\
+    \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+    1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_pressure_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/pressure\"/>\n    <origin rpy=\"0.0000 0.0000 0.0000\" xyz=\"0.390 0.000\
+    \ -0.033\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot5/dvl\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_dvl_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/dvl\"/>\n    <origin rpy=\"3.1416 0.0000 2.3562\" xyz=\"-0.413 0.000 0.113\"\
+    />\n  </joint>\n  <!-- Link -->\n  <link name=\"robot5/imu_filter\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_imu_filter_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/imu_filter\"/>\n    <origin rpy=\"0.0000 0.0000 0.0000\" xyz=\"0.364 -0.021\
+    \ -0.085\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"robot5/gps\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_gps_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/gps\"/>\n    <origin rpy=\"0 0 0\" xyz=\"0.70 0.35 -0.1\"/>\n  </joint>\n\
+    \  <!-- Link -->\n  <link name=\"robot5/imu\">\n    <inertial>\n      <origin\
+    \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+    1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_imu_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/imu\"/>\n    <origin rpy=\"0 0 -1.57\" xyz=\"-0.35 0.1 -0.2\"/>\n  </joint>\n\
+    \  <!-- Link -->\n  <link name=\"robot5/thruster_1\">\n    <inertial>\n      <origin\
+    \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+    1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+    \  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_thruster_1_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/thruster_1\"/>\n    <origin rpy=\"0 0 0\" xyz=\"-0.50 0.50 0.30\"/>\n \
+    \ </joint>\n  <!-- Link -->\n  <link name=\"robot5/thruster_2\">\n    <inertial>\n\
+    \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n  \
+    \    <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"\
+    1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"robot5/base_link_to_thruster_2_joint\"\
+    \ type=\"fixed\">\n    <parent link=\"robot5/base_link\"/>\n    <child link=\"\
+    robot5/thruster_2\"/>\n    <origin rpy=\"0 0 0\" xyz=\"-0.50 -0.50 0.30\"/>\n\
+    \  </joint>\n</robot>\n\n"
+  safe_depth_altitude:
+    max_depth: 200.0
+    min_altitude: 1.0
+    min_altitude_starts_at_depth: 0.5
+  safety_supervisor:
+    batteries:
+      min_charge: 14.5
+      min_voltage: 26.4
+      type: BatteryLevel
+    battery_control_board:
+      type: BatteryControlBoard
+    captain:
+      type: Captain
+    check_enabled_abort_and_surface:
+      diagnostic_status_names_to_check:
+      - /safety/safe_depth_altitude
+      - /safety/bag_recorder
+      - /safety/default_param_handler
+      level_if_not_enabled: 3
+      type: CheckEnabled
+    check_enabled_emergency_surface:
+      diagnostic_status_names_to_check:
+      - /control/controller
+      - /control/captain
+      - /control/pilot
+      - /safety/safety_supervisor_checker
+      level_if_not_enabled: 4
+      type: CheckEnabled
+    check_enabled_informative:
+      diagnostic_status_names_to_check:
+      - /control/thrusters
+      - /safety/param_logger
+      - /safety/cola2_version
+      level_if_not_enabled: 1
+      type: CheckEnabled
+    drop_weight_service: ''
+    emergency_surface_setpoints:
+    - 0.0
+    - 0.0
+    - 0.0
+    manual:
+      type: Manual
+    navigator:
+      altitude_data_timeout: 30.0
+      depth_data_timeout: 10.0
+      dvl_data_timeout: 30.0
+      gps_data_timeout: 30.0
+      imu_data_timeout: 10.0
+      min_frequency: 18.0
+      nav_data_timeout: 2.0
+      type: Navigator
+    safety_rule_names:
+    - batteries
+    - battery_control_board
+    - captain
+    - check_enabled_abort_and_surface
+    - check_enabled_emergency_surface
+    - check_enabled_informative
+    - teleoperation
+    - manual
+    - navigator
+    - temperature_batteries
+    - temperature_cpu
+    - temperature_pc_cylinder
+    - virtual_cage
+    - watchdog_timer
+    - water_inside
+    teleoperation:
+      teleoperation_link_timeout: 60.0
+      type: Teleoperation
+    temperature_batteries:
+      diagnostic_status_name: /safety/batteries
+      max_temperature: 55.0
+      type: Temperature
+    temperature_cpu:
+      diagnostic_status_name: /safety/computer_logger
+      max_temperature: 80.0
+      type: Temperature
+    temperature_pc_cylinder:
+      diagnostic_status_name: /safety/battery_control_board
+      max_temperature: 800.0
+      type: Temperature
+    virtual_cage:
+      enables_abort_and_surface: false
+      type: VirtualCage
+    watchdog_timer:
+      timeout: 36000
+      type: WatchdogTimer
+    water_inside:
+      check_battery_housing: false
+      check_extra_housing: false
+      type: CombinedWaterInside
+  sim_auv_nav_sensors:
+    depth_period: 0.2
+    depth_pressure_covariance: 10000.0
+    dvl_period: 0.2
+    dvl_velocity_covariance:
+    - 2.25e-06
+    - 2.25e-06
+    - 2.25e-06
+    gps_period: 1.0
+    gps_position_covariance:
+    - 1.0
+    - 1.0
+    imu_orientation_covariance:
+    - 1.0e-08
+    - 1.0e-08
+    - 1.0e-08
+    imu_period: 0.05
+    output_depth_pressure_covariance: 1000000.0
+    output_dvl_velocity_covariance:
+    - 0.04
+    - 0.04
+    - 0.04
+    output_gps_position_covariance:
+    - 9.0
+    - 9.0
+    output_imu_orientation_covariance:
+    - 0.01
+    - 0.01
+    - 0.01
+    output_usbl_position_covariance: 9.0
+    sea_bottom_depth: 15.0
+    sound_speed: 1500
+    usbl_depth_start: 2.0
+    usbl_period: 0.0
+    usbl_position_covariance: 1.0
+  sim_internal_sensors:
+    battery_consumption_per_second: 0.004
+    initial_battery_level: 98
+  teleoperation:
+    actualize_base_pose: true
+    base_pose:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    max_pos:
+    - 10.0
+    - 10.0
+    - 2.0
+    - 3.14159265359
+    - 3.14159265359
+    - 3.14159265359
+    max_vel:
+    - 0.5
+    - 0.0
+    - 0.35
+    - 0.0
+    - 0.0
+    - 0.3
+    min_pos:
+    - -10.0
+    - -10.0
+    - -2.0
+    - -3.14159265359
+    - -3.14159265359
+    - -3.14159265359
+    min_vel:
+    - -0.25
+    - 0.0
+    - -0.35
+    - 0.0
+    - 0.0
+    - -0.3
+    pose_controlled_axis:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+  virtual_cage:
+    cage_center_east: 0.0
+    cage_center_north: 0.0
+    cage_radius: 500.0
+rosdistro: 'noetic
+
+  '
+roslaunch:
+  uris:
+    host_uib173932__46253: http://uib173932:46253/
+rosversion: '1.17.0
+
+  '
+run_id: 7a2b4408-1a8e-11f0-baf8-4b91b8e4646c
+surge_velocity: 1
+task_allocation: 1
+tolerance: 1
+tracking_radius: 30
+transmission_time: 30
+w1: 0.6
+w2: 0.4
+w3: 0
+w4: 0
