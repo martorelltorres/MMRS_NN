@@ -49,7 +49,7 @@ def create_models():
         "Random Forest": MultiOutputRegressor(RandomForestRegressor(n_estimators=1000)),
         "SVR": MultiOutputRegressor(svm.SVR(kernel='rbf', C=7, epsilon=1.2, gamma=0.1)),
         "Polynomial" : MultiOutputRegressor(make_pipeline(PolynomialFeatures(4), LinearRegression())),
-        "Lasso": MultiOutputRegressor(Lasso(alpha=0.5)),
+        "Lasso": MultiOutputRegressor(Lasso(alpha=0.3)),
     }
 
 models_dict = {auv: create_models() for auv in range(3, 7)}
@@ -181,8 +181,8 @@ plt.tight_layout()
 plt.show()
 
 # --------------------- PREDICTION FOR SPECIFIC VALUES ---------------------
-auv_count = 6
-area = 55000
+auv_count = 5
+area = 35000
 
 if auv_count not in models_dict:
     print(f"No trained models found for {auv_count} AUVs.")
@@ -211,7 +211,7 @@ auv_grid, area_grid = np.meshgrid(auv_range, area_range)
 X_grid = np.c_[auv_grid.ravel(), area_grid.ravel()]
 
 fig = plt.figure(figsize=(18, 5))
-for i, weight_name in enumerate(['w1', 'w2', 'w3']):
+for i, weight_name in enumerate([r'$w_1$', r'$w_2$', r'$w_3$']):
     model = make_pipeline(StandardScaler(), SVR(kernel='rbf', C=7, epsilon=1.2, gamma=0.1))
     model.fit(X, y[:, i])
     y_pred_grid = model.predict(X_grid).reshape(auv_grid.shape)
@@ -219,16 +219,13 @@ for i, weight_name in enumerate(['w1', 'w2', 'w3']):
     ax = fig.add_subplot(1, 3, i+1, projection='3d')
     ax.plot_surface(auv_grid, area_grid, y_pred_grid, cmap='viridis', alpha=0.7)
     ax.scatter(X[:, 0], X[:, 1], y[:, i], c='red', s=20)
-    ax.set_xlabel('Number of AUVs')
-    ax.set_ylabel('Exploration Area Surface [m^2]')
-    ax.set_zlabel(weight_name)
-    ax.set_title(f'SVM Regression ({weight_name})')
+    ax.set_xlabel('Number of AUVs', fontsize=14,labelpad=5)
+    ax.set_ylabel('Exploration Area Surface [m²]', fontsize=14,labelpad=15)
+    ax.set_zlabel(weight_name,fontsize=14)
+    ax.set_title(f'SVM Regression ({weight_name})', fontsize=16)
+    ax.tick_params(axis='both', labelsize=12)
+    ax.tick_params(axis='z', labelsize=12)
 
 plt.tight_layout()
 plt.show()
 
-# 55000
-# 3: w1 = 6.224, w2 = 2.832, w3 = 0.944
-# 4: w1 = 5.917, w2 = 3.065, w3 = 1.018
-# 5:  w1 = 6.666, w2 = 2.387, w3 = 0.947
-# 6: w1 = 5.992, w2 = 2.972, w3 = 1.037
