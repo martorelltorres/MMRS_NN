@@ -10,14 +10,17 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import Adam
+import os
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 
 # Load training data
-train_df = pd.read_csv('/home/uib/MMRS_NN/data/may/artm_data_train.csv')  
+train_df = pd.read_csv(os.path.join(REPO, 'data', 'may', 'artm_data_train.csv'))  
 X_train = train_df[['auv_count', 'area']].values  
 y_train = train_df[['a', 'b','utility']].values  
 
 # Load evaluation data
-test_df = pd.read_csv('/home/uib/MMRS_NN/data/may/artm_data_test.csv')  
+test_df = pd.read_csv(os.path.join(REPO, 'data', 'may', 'artm_data_test.csv'))  
 X_test = test_df[['auv_count', 'area']].values  
 y_test = test_df[['a', 'b','utility']].values  
 

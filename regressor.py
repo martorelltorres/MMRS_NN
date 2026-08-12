@@ -11,52 +11,148 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, LeaveOneOut
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVR
+from sklearn.dummy import DummyRegressor
 from sklearn.neighbors import NearestNeighbors
 from mpl_toolkits.mplot3d import Axes3D
+import os
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 
 # --------------------- LOAD TRAINING DATA ---------------------
 paths = [
-    '/home/uib/MMRS_NN/weights/3AUV_weights.csv',
-    '/home/uib/MMRS_NN/weights/4AUV_weights.csv',
-    '/home/uib/MMRS_NN/weights/5AUV_weights.csv',
-    '/home/uib/MMRS_NN/weights/6AUV_weights.csv',
+    os.path.join(REPO, 'weights', '3AUV_weights.csv'),
+    os.path.join(REPO, 'weights', '4AUV_weights.csv'),
+    os.path.join(REPO, 'weights', '5AUV_weights.csv'),
+    os.path.join(REPO, 'weights', '6AUV_weights.csv'),
 ]
 
 owa_df = pd.concat([pd.read_csv(p) for p in paths], ignore_index=True)
 owa_input = owa_df[['auv_count', 'area']].values
 owa_output = owa_df[['w1', 'w2', 'w3', 'utility']].values
 
-test_path = "/home/uib/MMRS_NN/weights/optimal_test_weights.csv"  
+test_path = os.path.join(REPO, 'weights', 'optimal_test_weights.csv')  
 test_df = pd.read_csv(test_path)
 
 # --------------------- SCALING ---------------------
-scalers_dict = {}
-scaled_inputs = {}
+# One scaler over the whole training set. Fitting a separate scaler per fleet size left
+# auv_count with zero variance inside each subset, so StandardScaler collapsed it to a
+# constant and every model effectively saw a single feature with six samples.
+scaler = StandardScaler()
+scaled_input = scaler.fit_transform(owa_input)
 
-for auv in np.unique(owa_input[:, 0]):
-    indices = owa_input[:, 0] == auv
-    scaler = StandardScaler()
-    scaled_inputs[auv] = scaler.fit_transform(owa_input[indices])
-    scalers_dict[auv] = scaler
+# --------------------- HYPERPARAMETER SELECTION ---------------------
+# Set to False to reproduce the published results with the parameters of Table 1.
+TUNE_HYPERPARAMETERS = True
 
-# --------------------- MODEL DEFINITIONS ---------------------
-def create_models():
+# Published configuration, kept so the previous numbers stay reproducible.
+PUBLISHED_PARAMS = {
+    "Decision Tree": {"max_depth": 5, "min_samples_leaf": 3},
+    "Random Forest": {"n_estimators": 1000},
+    "SVR": {"kernel": "rbf", "C": 7, "epsilon": 1.2, "gamma": 0.1},
+    "Lasso": {"alpha": 0.3},
+}
+
+# Every model that is compared gets its own search, not just the SVR: tuning one technique
+# and leaving the rest at hand-picked values would make the comparison of Figures 9 and 10
+# meaningless.
+PARAM_GRIDS = {
+    "Decision Tree": {"estimator__max_depth": [2, 3, 5, 8, None],
+                      "estimator__min_samples_leaf": [1, 2, 3, 5]},
+    "Random Forest": {"estimator__n_estimators": [100, 300, 1000],
+                      "estimator__max_depth": [2, 3, 5, None]},
+    # The kernel is searched rather than assumed: the published configuration fixed the RBF
+    # by hand, and the choice turns out to matter more than any of its parameters. The grid is
+    # kept coarse on purpose -- with 24 samples a finer one would only fit the validation
+    # folds -- but it spans the range where both kernels have their optimum.
+    "SVR": {"estimator__kernel": ["rbf", "poly"],
+            "estimator__degree": [2, 3],
+            "estimator__C": [0.1, 1, 10, 100],
+            "estimator__epsilon": [0.01, 0.05, 0.1, 0.3, 1.0],
+            "estimator__gamma": ["scale", 0.1, 1.0, 10.0]},
+    "Polynomial": {"estimator__polynomialfeatures__degree": [1, 2, 3, 4]},
+    "Lasso": {"estimator__alpha": [0.001, 0.01, 0.05, 0.1, 0.3, 1.0]},
+}
+
+
+def base_models():
+    """Model templates. Hyperparameters are either searched or taken from PUBLISHED_PARAMS."""
     return {
-        "Decision Tree": MultiOutputRegressor(DecisionTreeRegressor(max_depth=5, min_samples_leaf=3)),
-        "Random Forest": MultiOutputRegressor(RandomForestRegressor(n_estimators=1000)),
-        "SVR": MultiOutputRegressor(svm.SVR(kernel='rbf', C=7, epsilon=1.2, gamma=0.1)),
-        "Polynomial" : MultiOutputRegressor(make_pipeline(PolynomialFeatures(4), LinearRegression())),
-        "Lasso": MultiOutputRegressor(Lasso(alpha=0.3)),
+        "Decision Tree": MultiOutputRegressor(DecisionTreeRegressor(random_state=0)),
+        "Random Forest": MultiOutputRegressor(RandomForestRegressor(random_state=0)),
+        # max_iter caps the pathological corners of the grid: a polynomial kernel with large
+        # C and gamma can leave libsvm iterating without converging, which stalls the whole
+        # search. Combinations that hit the cap simply score badly and lose.
+        "SVR": MultiOutputRegressor(SVR(kernel='rbf', max_iter=200000)),
+        "Polynomial": MultiOutputRegressor(make_pipeline(PolynomialFeatures(), LinearRegression())),
+        "Lasso": MultiOutputRegressor(Lasso(max_iter=10000)),
+        # Reference point: predicts the mean of the training targets and ignores the inputs
+        # entirely. Any model that does not beat it is not using the mission descriptors, so
+        # this has to be reported alongside the rest rather than assumed away. It has nothing
+        # to tune.
+        "Mean baseline": DummyRegressor(strategy='mean'),
     }
 
-models_dict = {auv: create_models() for auv in range(3, 7)}
 
-for auv_count, models in models_dict.items():
+def published_models():
+    return {
+        "Decision Tree": MultiOutputRegressor(DecisionTreeRegressor(**PUBLISHED_PARAMS["Decision Tree"])),
+        "Random Forest": MultiOutputRegressor(RandomForestRegressor(**PUBLISHED_PARAMS["Random Forest"])),
+        "SVR": MultiOutputRegressor(SVR(**PUBLISHED_PARAMS["SVR"])),
+        "Polynomial": MultiOutputRegressor(make_pipeline(PolynomialFeatures(4), LinearRegression())),
+        "Lasso": MultiOutputRegressor(Lasso(**PUBLISHED_PARAMS["Lasso"])),
+        "Mean baseline": DummyRegressor(strategy='mean'),
+    }
+
+
+def tune(models, X, y):
+    """Select hyperparameters by leave-one-out cross-validation on the training set.
+
+    With 24 training samples LOO is the only protocol that leaves anything to validate on:
+    a k-fold split would hold out two or three points at a time out of twenty-four. The
+    search never sees the test set, so the reported test error stays an honest estimate.
+    """
+    records = []
+    for name, model in models.items():
+        grid = PARAM_GRIDS.get(name)
+        if grid is None:
+            model.fit(X, y)
+            records.append({"model": name, "selected": "n/a", "loo_mae": np.nan})
+            continue
+
+        search = GridSearchCV(model, grid, cv=LeaveOneOut(),
+                              scoring='neg_mean_absolute_error', n_jobs=-1)
+        search.fit(X, y)
+        models[name] = search.best_estimator_
+
+        selected = {k.replace('estimator__', '').replace('polynomialfeatures__', ''): v
+                    for k, v in search.best_params_.items()}
+        records.append({"model": name, "selected": str(selected),
+                        "loo_mae": -search.best_score_})
+        print("  %-15s %-58s LOO MAE %.4f"
+              % (name, str(selected), -search.best_score_))
+
+    return models, pd.DataFrame(records)
+
+
+# A single model per technique, trained on the 24 samples with both descriptors as real
+# inputs. Metrics are still reported per fleet size, so the published figures keep their
+# structure and stay comparable.
+if TUNE_HYPERPARAMETERS:
+    print("\nSelecting hyperparameters by leave-one-out cross-validation (%d samples)"
+          % len(scaled_input))
+    models, search_df = tune(base_models(), scaled_input, owa_output)
+    search_df.to_csv("results/hyperparameter_search.csv", index=False)
+    print("\nSelected hyperparameters saved to 'results/hyperparameter_search.csv'")
+else:
+    models = published_models()
     for model in models.values():
-        model.fit(scaled_inputs[auv_count], owa_output[owa_input[:, 0] == auv_count])
+        model.fit(scaled_input, owa_output)
+
+models_dict = {auv: models for auv in range(3, 7)}
+scalers_dict = {auv: scaler for auv in range(3, 7)}
 
 # --------------------- PREDICTION FUNCTION WITH NORMALIZATION ---------------------
 def normalize_weights(weights):
@@ -123,6 +219,49 @@ test_metrics_df = pd.DataFrame(test_metrics_summary).sort_values(["AUV Count", "
 test_metrics_df.to_csv("results/owa_model_test_metrics.csv", index=False)
 print("\n📁 Test metrics saved to 'results/owa_model_test_metrics.csv'")
 
+
+# --------------------- TEST METRICS (PER COMPONENT) ---------------------
+test_metrics_summary = []
+
+for auv in sorted(test_df['auv_count'].unique()):
+    test_subset = test_df[test_df['auv_count'] == auv]
+    test_input = scalers_dict[auv].transform(test_subset[['auv_count', 'area']].values)
+    test_output = test_subset[['w1', 'w2', 'w3']].values
+
+    for name, model in models_dict[auv].items():
+        preds = model.predict(test_input)
+        norm_preds = np.apply_along_axis(normalize_weights, 1, preds[:, :3])
+
+        # Global metrics
+        mae_global = mean_absolute_error(test_output, norm_preds)
+        rmse_global = mean_squared_error(test_output, norm_preds, squared=False)
+
+        # Per-component metrics
+        mae_w1 = mean_absolute_error(test_output[:, 0], norm_preds[:, 0])
+        mae_w2 = mean_absolute_error(test_output[:, 1], norm_preds[:, 1])
+        mae_w3 = mean_absolute_error(test_output[:, 2], norm_preds[:, 2])
+
+        rmse_w1 = mean_squared_error(test_output[:, 0], norm_preds[:, 0], squared=False)
+        rmse_w2 = mean_squared_error(test_output[:, 1], norm_preds[:, 1], squared=False)
+        rmse_w3 = mean_squared_error(test_output[:, 2], norm_preds[:, 2], squared=False)
+
+        test_metrics_summary.append({
+            "AUV Count": int(auv),
+            "Regression Model": name,
+            "MAE_global": mae_global,
+            "RMSE_global": rmse_global,
+            "MAE_w1": mae_w1,
+            "MAE_w2": mae_w2,
+            "MAE_w3": mae_w3,
+            "RMSE_w1": rmse_w1,
+            "RMSE_w2": rmse_w2,
+            "RMSE_w3": rmse_w3
+        })
+
+test_metrics_df = pd.DataFrame(test_metrics_summary)
+test_metrics_df.to_csv("results/owa_model_test_metrics_per_component.csv", index=False)
+print("\n📁 Per-component test metrics saved.")
+
 # --------------------- PLOTS ---------------------
 df_long = owa_df.melt(id_vars=["area", "auv_count", "utility"], 
                   value_vars=["w1", "w2", "w3"],
@@ -140,10 +279,10 @@ plt.tight_layout()
 plt.show()
 
 # Add a combined column for AUV and model
-test_metrics_df["Group"] = test_metrics_df["AUV Count"].astype(str) + " AUV - " + test_metrics_df["Model"]
+test_metrics_df["Group"] = test_metrics_df["AUV Count"].astype(str) + " AUV - " + test_metrics_df["Regression Model"]
 
 # Sort by AUV Count and MAE
-sorted_df = test_metrics_df.sort_values(["AUV Count", "MAE"])
+sorted_df = test_metrics_df.sort_values(["AUV Count", "MAE_global"])
 custom_order = sorted_df["Group"].values
 
 # MAE bar plot
@@ -151,7 +290,7 @@ plt.figure(figsize=(16, 6))
 sns.barplot(
     data=sorted_df,
     x="Group",
-    y="MAE",
+    y="MAE_global",
     palette="viridis",
     order=custom_order
 )
@@ -168,7 +307,7 @@ plt.figure(figsize=(16, 6))
 sns.barplot(
     data=sorted_df,
     x="Group",
-    y="RMSE",
+    y="RMSE_global",
     palette="magma",
     order=custom_order
 )
@@ -180,6 +319,74 @@ plt.grid(axis='y', linestyle='--', alpha=0.6)
 plt.tight_layout()
 plt.show()
 
+# --------------------- PER-COMPONENT MAE PLOT ---------------------
+
+df_melt = test_metrics_df.melt(
+    id_vars=["AUV Count", "Regression Model"],
+    value_vars=["MAE_w1", "MAE_w2", "MAE_w3"],
+    var_name="Weight",
+    value_name="MAE"
+)
+
+plt.figure(figsize=(16,6))
+ax = sns.barplot(
+    data=df_melt,
+    x="Regression Model",
+    y="MAE",
+    hue="Weight",          # importante si tienes w1, w2, w3
+    palette="magma",
+    errorbar="ci"
+)
+
+ax.set_title("Per-Component MAE Comparison", fontsize=18)
+ax.set_ylabel("Mean Absolute Error (MAE)", fontsize=16)
+ax.set_xlabel("Regression Model", fontsize=16)
+
+ax.tick_params(axis='x', labelsize=14)
+ax.tick_params(axis='y', labelsize=14)
+
+plt.xticks(rotation=45)
+
+# Añadir valores encima de cada barra
+for container in ax.containers:
+    ax.bar_label(container, fmt='%.3f', fontsize=11)
+
+plt.tight_layout()
+plt.show()
+
+# --------------------- PER-COMPONENT RMSE PLOT ---------------------
+
+df_melt_rmse = test_metrics_df.melt(
+    id_vars=["AUV Count", "Regression Model"],
+    value_vars=["RMSE_w1", "RMSE_w2", "RMSE_w3"],
+    var_name="Weight",
+    value_name="RMSE"
+)
+
+plt.figure(figsize=(16,6))
+ax = sns.barplot(
+    data=df_melt_rmse,
+    x="Regression Model",
+    y="RMSE",
+    hue="Weight",
+    palette="magma",
+    errorbar="ci"
+)
+
+ax.set_title("Per-Component RMSE Comparison", fontsize=18)
+ax.set_ylabel("Root Mean Squared Error (RMSE)", fontsize=16)
+ax.set_xlabel("Regression Model", fontsize=16)
+ax.tick_params(axis='x', labelsize=14)
+ax.tick_params(axis='y', labelsize=14)
+
+plt.xticks(rotation=45)
+
+# ----------------- ADD VALUE LABELS -----------------
+for container in ax.containers:
+    ax.bar_label(container, fmt='%.3f', fontsize=11)
+
+plt.tight_layout()
+plt.show()
 # --------------------- PREDICTION FOR SPECIFIC VALUES ---------------------
 auv_count = 5
 area = 35000

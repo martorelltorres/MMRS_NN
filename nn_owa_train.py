@@ -1,5 +1,8 @@
 import numpy as np
 import pandas as pd
+import os
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 from itertools import product
 from sklearn.tree import DecisionTreeRegressor
 from sklearn import svm
@@ -12,7 +15,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 
 # Load OWA training data
-train_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility_function/all_owa_data.csv')
+train_df = pd.read_csv(os.path.join(REPO, 'data', 'utility_function', 'all_owa_data.csv'))
 owa_input_data = train_df[['auv_count', 'area', 'w1', 'w2', 'w3']].values
 owa_output_data = train_df[['utility']].values
 
@@ -38,7 +41,7 @@ poly_lasso = make_pipeline(PolynomialFeatures(degree=4), Lasso(alpha=0.1, max_it
 poly_lasso.fit(owa_input_data, owa_output_data)
 
 # Load ARTM training data
-train_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility_function/all_artm_data.csv')
+train_df = pd.read_csv(os.path.join(REPO, 'data', 'utility_function', 'all_artm_data.csv'))
 owa_input_data = train_df[['auv_count', 'area', 'a', 'b']].values
 owa_output_data = train_df[['utility']].values
 

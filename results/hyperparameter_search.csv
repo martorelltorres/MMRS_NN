@@ -1,0 +1,7 @@
+model,selected,loo_mae
+Decision Tree,"{'max_depth': 3, 'min_samples_leaf': 5}",1.1204026804227347
+Random Forest,"{'max_depth': 2, 'n_estimators': 1000}",1.1573270481360503
+SVR,"{'C': 0.1, 'degree': 3, 'epsilon': 0.01, 'gamma': 1.0, 'kernel': 'poly'}",0.9963283792226418
+Polynomial,{'degree': 2},1.1485067459054816
+Lasso,{'alpha': 1.0},1.0639968281530006
+Mean baseline,n/a,

@@ -1,7 +1,10 @@
 import pandas as pd
+import os
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 
 # Cargar el archivo CSV original
-df = pd.read_csv("/home/uib/MMRS_NN/data/new_areas/data_test.csv" )  
+df = pd.read_csv(os.path.join(REPO, 'data', 'new_areas', 'data_test.csv') )  
 
 # Obtener los índices de las filas con la utilidad máxima por cada combinación de area y auv_count
 idx_max_utility = df.groupby(['area', 'auv_count'])['utility'].idxmax()

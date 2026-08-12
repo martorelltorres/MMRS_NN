@@ -16,13 +16,16 @@ from sklearn.pipeline import Pipeline
 from sklearn.svm import SVR
 from sklearn.neighbors import NearestNeighbors
 from mpl_toolkits.mplot3d import Axes3D
+import os
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 
 # --------------------- LOAD TRAINING DATA ---------------------
 paths = [
-    '/home/uib/MMRS_NN/weights/3AUV_weights.csv',
-    '/home/uib/MMRS_NN/weights/4AUV_weights.csv',
-    '/home/uib/MMRS_NN/weights/5AUV_weights.csv',
-    '/home/uib/MMRS_NN/weights/6AUV_weights.csv',
+    os.path.join(REPO, 'weights', '3AUV_weights.csv'),
+    os.path.join(REPO, 'weights', '4AUV_weights.csv'),
+    os.path.join(REPO, 'weights', '5AUV_weights.csv'),
+    os.path.join(REPO, 'weights', '6AUV_weights.csv'),
 ]
 
 owa_df = pd.concat([pd.read_csv(p) for p in paths], ignore_index=True)

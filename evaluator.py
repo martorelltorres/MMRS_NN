@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Cargar el CSV
-data = pd.read_csv('/home/uib/MMRS_NN/data/new_areas/all_owa_data.csv', usecols=['utility', 'area', 'auv_count', 'w1', 'w2', 'w3'])
+data = pd.read_csv(os.path.join(REPO, 'data', 'new_areas', 'all_owa_data.csv'), usecols=['utility', 'area', 'auv_count', 'w1', 'w2', 'w3'])
 
 # Función para contar decimales
 def count_decimals(x):
@@ -116,6 +116,9 @@ plt.show()
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 
 # Datos
 data = {

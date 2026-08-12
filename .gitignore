@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Editor and office lock files
+.~lock.*#
+*.swp
+*~
+
+# Campaign bagfiles, published separately (see README)
+campaigns/
+
+# Metric caches rebuilt by the analysis scripts
+*_metrics.pkl
+
+# Campaign run logs (verbose, machine-specific)
+*.log

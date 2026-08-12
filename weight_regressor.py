@@ -11,9 +11,16 @@ from sklearn.pipeline import make_pipeline
 import seaborn as sns
 from sklearn.multioutput import MultiOutputRegressor
 
+import os
+REPO = os.path.dirname(os.path.abspath(__file__))
+
 # --------------------- CARGA DE DATOS DE ENTRENAMIENTO ---------------------
-owa_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/optimal_weights.csv')
-owa_df = pd.read_csv('/home/antoni/MMRS_ws/src/MMRS_stack/MMRS_NN/data/utility_function/all_owa_data.csv')
+# Rutas relativas al repositorio: las absolutas apuntaban a /home/antoni y no existen aquí.
+# NOTA: data/rebuttal/all_owa_data.csv no está en esta copia, así que esta carga falla. La
+# línea siguiente sobrescribe la anterior, de modo que optimal_weights.csv nunca llegaba a
+# usarse; se conserva el orden original para no cambiar el comportamiento previsto.
+owa_df = pd.read_csv(os.path.join(REPO, 'weights', 'optimal_weights.csv'))
+owa_df = pd.read_csv(os.path.join(REPO, 'data', 'rebuttal', 'all_owa_data.csv'))
 owa_input = owa_df[['auv_count', 'area']].values
 owa_output = owa_df[['w1', 'w2', 'w3']].values
 
