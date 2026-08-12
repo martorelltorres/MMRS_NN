@@ -13,8 +13,15 @@ venv/
 *.swp
 *~
 
-# Campaign bagfiles, published separately (see README)
-campaigns/
+# Superseded campaigns, recorded with the uncorrected decision node. They are kept out of
+# the package but left on disk; the published campaigns live in data/v2_sweep, v2_dispersion,
+# v3_roundrobin and v4_predicted.
+data/new_areas/**/*.bag
+data/new_areas/**/params_*.yaml
+data/new_areas_/**/*.bag
+data/new_areas_/**/params_*.yaml
+data/old/
+data/svr_predictions/
 
 # Metric caches rebuilt by the analysis scripts
 *_metrics.pkl

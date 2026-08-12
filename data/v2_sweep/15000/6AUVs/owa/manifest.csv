@@ -1,0 +1,6 @@
+index,area,auvs,aggregation,w1,w2,w3,alpha,beta,realization,scenario,bagfile,params_file,started_at,duration_s,outcome,warnings
+0,15000,6,owa,0.4,0.4,0.2,,,,15000.pickle,results_0.bag,params_0.yaml,2026-08-06T12:50:37,918.4,completed,
+1,15000,6,owa,0.6,0.2,0.2,,,,15000.pickle,results_1.bag,params_1.yaml,2026-08-06T13:06:11,912.8,completed,
+2,15000,6,owa,0.6,0.4,0,,,,15000.pickle,results_2.bag,params_2.yaml,2026-08-06T13:21:34,904.7,completed,
+3,15000,6,owa,0.8,0.2,0,,,,15000.pickle,results_3.bag,params_3.yaml,2026-08-06T13:36:50,894.0,completed,
+4,15000,6,owa,1,0,0,,,,15000.pickle,results_4.bag,params_4.yaml,2026-08-06T13:51:55,896.2,completed,

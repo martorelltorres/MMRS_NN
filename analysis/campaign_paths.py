@@ -1,10 +1,9 @@
 """Resolution of the campaign data location, shared by the analysis scripts.
 
-The simulation campaigns are published as ROS bagfiles separately from this repository,
-because they run to several hundred megabytes. Every analysis script therefore needs to be
-told where they were unpacked. The location is taken, in order of precedence, from the
---data-root option, from the MRS_DATA environment variable, or from a `campaigns` directory
-next to this repository.
+The simulation campaigns ship with this repository under `data/`, so the analysis scripts run
+without any further download. The location is taken, in order of precedence, from the
+--data-root option, from the MRS_DATA environment variable, or from that `data` directory,
+the last of which is what makes the default invocation work from a fresh clone.
 
 A campaign directory is expected to hold one sub-directory per campaign, each laid out as
 
@@ -24,7 +23,7 @@ def default_root():
     env = os.environ.get(ENV_VAR)
     if env:
         return env
-    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'campaigns')
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 
 
 def add_argument(parser):

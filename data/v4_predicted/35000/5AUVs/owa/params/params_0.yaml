@@ -1,0 +1,12 @@
+aggregation_model: 2
+alpha: 0
+area_exploration: 35000
+beta: 10
+number_of_asvs: 1
+number_of_auvs: 5
+number_of_robots: 6
+pickle_path: /home/uib/MMRS_ws/src/MMRS_stack/multi_robot_system/missions/pickle/5AUVs/35000.pickle
+w1: 0.6403043482774011
+w2: 0.3091647030735854
+w3: 0.050530948649013356
+w4: 0

@@ -1,0 +1,9 @@
+index,area,auvs,aggregation,w1,w2,w3,alpha,beta,realization,scenario,bagfile,params_file,started_at,duration_s,outcome,warnings
+0,55000,3,roundrobin,,,,,,0,55000_r0.pickle,results_0.bag,params_0.yaml,2026-08-11T01:26:34,4728.6,completed,
+1,55000,3,roundrobin,,,,,,1,55000_r1.pickle,results_1.bag,params_1.yaml,2026-08-11T02:45:29,4716.3,completed,
+2,55000,3,roundrobin,,,,,,2,55000_r2.pickle,results_2.bag,params_2.yaml,2026-08-11T04:04:13,4722.6,completed,
+3,55000,3,roundrobin,,,,,,3,55000_r3.pickle,results_3.bag,params_3.yaml,2026-08-11T05:23:15,4716.1,completed,
+4,55000,3,roundrobin,,,,,,4,55000_r4.pickle,results_4.bag,params_4.yaml,2026-08-11T06:42:15,4798.2,completed,
+5,55000,3,roundrobin,,,,,,5,55000_r5.pickle,results_5.bag,params_5.yaml,2026-08-11T08:02:36,4736.4,completed,
+6,55000,3,roundrobin,,,,,,6,55000_r6.pickle,results_6.bag,params_6.yaml,2026-08-11T09:21:39,4730.1,completed,
+7,55000,3,roundrobin,,,,,,7,55000_r7.pickle,results_7.bag,params_7.yaml,2026-08-11T11:27:42,4726.9,completed,

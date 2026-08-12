@@ -29,18 +29,19 @@ outside the OWA regression study and are not required to reproduce any published
 
 ## Campaign data
 
-The simulations are the expensive part: a single mission runs in real time and takes between ten
-and forty minutes, and the four campaigns together amount to roughly 530 missions. The recorded
-bagfiles are published as a separate dataset because of their size.
+The recorded bagfiles ship with this repository under `data/`, so a fresh clone reproduces every
+published number without any further download. The simulations themselves are the expensive
+part: a single mission runs in real time and takes between ten and forty minutes, and the four
+campaigns together amount to 528 missions, on the order of 200 hours of computation.
 
-Unpack them anywhere and point the analysis scripts at that location, either with `--data-root`
-or through the `MRS_DATA` environment variable:
+The analysis scripts look for the campaigns in `data/` by default. To analyse a copy held
+elsewhere, pass `--data-root` or set the environment variable:
 
 ```bash
 export MRS_DATA=/path/to/campaigns
 ```
 
-The expected layout is one directory per campaign:
+One directory per campaign:
 
 | Campaign | Missions | Contents |
 |---|---|---|
@@ -58,7 +59,7 @@ Regenerating the campaigns themselves, rather than analysing the published ones,
 ```bash
 rosrun multi_robot_system run_simulations.py \
     --areas 15000 35000 55000 --auvs 3 6 --realizations 8 --workers 2 \
-    --output-root $MRS_DATA/v2_dispersion
+    --output-root data/v2_dispersion
 ```
 
 Cells of six AUVs must be run with `--workers 1`: two concurrent six-AUV missions contend for
@@ -69,7 +70,7 @@ the machine and distort the mission durations.
 ### 1. Import the supervised targets
 
 ```bash
-python3 import_targets.py --campaign $MRS_DATA/v2_sweep
+python3 import_targets.py --campaign data/v2_sweep
 ```
 
 Converts the campaign extraction into `weights/{3,4,5,6}AUV_weights.csv` (six training areas
@@ -170,5 +171,8 @@ layout and tested with a Wilcoxon signed-rank test blocked by layout.
 | `weights/` | supervised training and test targets |
 | `weights/published/` | targets behind the originally published figures |
 | `results/` | metrics, predictions and exported weights |
-| `data/` | earlier campaign extractions retained for provenance |
+| `data/v2_sweep` | phase 1: grid sweep, 220 missions |
+| `data/v2_dispersion` | phase 2: replication over object layouts, 240 missions |
+| `data/v3_roundrobin` | phase 3: round-robin baseline, 48 missions |
+| `data/v4_predicted` | predicted weighting vectors simulated, 20 missions |
 | `nn_*.py`, `artm_*` | neural-network and ARTM variants, outside the OWA regression study |

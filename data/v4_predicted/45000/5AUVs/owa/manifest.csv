@@ -1,0 +1,2 @@
+index,area,auvs,aggregation,w1,w2,w3,alpha,beta,realization,scenario,bagfile,params_file,started_at,duration_s,outcome,warnings
+0,45000,5,owa,0.6383956161674426,0.30101767541510444,0.060586708417452916,,,,45000.pickle,results_0.bag,params_0.yaml,2026-08-12T06:13:50,2542.0,completed,
