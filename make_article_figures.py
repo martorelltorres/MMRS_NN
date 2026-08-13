@@ -40,7 +40,7 @@ plt.rcParams.update({
 # Fixed order and colours so every figure tells the same visual story.
 ORDER = ['Random Forest', 'SVR', 'Decision Tree', 'Polynomial', 'Lasso', 'Mean baseline']
 LABEL = {'Random Forest': 'Random Forest', 'SVR': 'SVR', 'Decision Tree': 'Decision Tree',
-         'Polynomial': 'Polynomial', 'Lasso': 'Lasso', 'Mean baseline': 'Mean predictor'}
+         'Polynomial': 'Polynomial', 'Lasso': 'Lasso', 'Mean baseline': 'Constant predictor'}
 COLOUR = {'Random Forest': '#1f4e79', 'SVR': '#4e79a7', 'Decision Tree': '#76b7b2',
           'Polynomial': '#b07aa1', 'Lasso': '#bab0ac', 'Mean baseline': '#8c8c8c'}
 

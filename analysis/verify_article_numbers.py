@@ -135,6 +135,11 @@ def main():
           'count of completed, warning-free missions', 'v2_dispersion manifests', tol=0)
     check(S, 'baseline missions', 48, len(rr),
           'count of completed, warning-free missions', 'v3_roundrobin manifests', tol=0)
+    # A mission whose ASV distance went unrecorded reads as zero, which maximises the distance
+    # term of Eq.(6) and inflates its utility. No such mission may reach the analysis.
+    zero = int(((disp.travelled_distance <= 0).sum() + (rr.travelled_distance <= 0).sum()))
+    check(S, 'missions with an unrecorded ASV distance', 0, zero,
+          'travelled_distance <= 0 over every mission analysed', 'both campaigns', tol=0)
 
     # ----------------------------------------------------------------- Section 5.2
     S = '5.2 placement variability'
@@ -281,6 +286,9 @@ def main():
     pickle.dump(cache, open(CACHE, 'wb'))
     check(S, 'sweep missions', 220, len(sweep), 'completed missions', 'v2_sweep', tol=0)
     check(S, 'predicted missions', 20, len(pred), 'completed missions', 'v4_predicted', tol=0)
+    check(S, 'sweep and predicted with an unrecorded ASV distance', 0,
+          int((sweep.travelled_distance <= 0).sum() + (pred.travelled_distance <= 0).sum()),
+          'travelled_distance <= 0 over every mission analysed', 'v2_sweep + v4_predicted', tol=0)
 
     rows = []
     for (area, auvs), pp in pred.groupby(['area', 'auvs']):
@@ -310,7 +318,7 @@ def main():
     S = '5.1 alternative normalisation'
     cols = ['regular_latency', 'priority_latency', 'regular_std', 'priority_std',
             'travelled_distance']
-    alt = []
+    alt, gamma, upred = [], [], []
     for (area, auvs), pp in pred.groupby(['area', 'auvs']):
         ss = sweep[(sweep.area == area) & (sweep.auvs == auvs)]
         if len(ss) < 5:
@@ -331,12 +339,31 @@ def main():
         ug = ss.apply(u, axis=1)
         up = u(pp.iloc[0])
         alt.append(100 * (up - ug.min()) / (ug.max() - ug.min()))
+        # Under this scale a predicted mission shorter than every grid mission normalises below
+        # zero, and the distance term of Eq.(6) then exceeds the bound of one it holds on [0,1].
+        atd_n = ((pp.travelled_distance.iloc[0] - lohi['travelled_distance'][0])
+                 / (lohi['travelled_distance'][1] - lohi['travelled_distance'][0]))
+        gamma.append(float(np.exp(-atd_n)))
+        upred.append(up)
     alt = np.array(alt)
+    gamma = np.array(gamma)
+    upred = np.array(upred)
     F = 'Eq.(13) with the scale fixed by the 5 grid missions, prediction projected onto it'
     check(S, 'mean APA, grid-only scale (%)', 253, float(alt.mean()), F, 'v2_sweep + v4_predicted',
           tol=0.5)
     check(S, 'max APA, grid-only scale (%)', 2129, float(alt.max()), F, 'v2_sweep + v4_predicted',
           tol=1)
+    F5 = 'gamma*exp(-ATD_n) with ATD_n projected onto the grid-only scale'
+    check(S, 'cells with the distance term above 1', 8, int((gamma > 1).sum()), F5,
+          'v2_sweep + v4_predicted', tol=0)
+    check(S, 'largest distance term', 13.05, float(gamma.max()), F5, 'v2_sweep + v4_predicted',
+          tol=0.01)
+    check(S, 'largest resulting utility', 13.80, float(upred.max()),
+          'Eq.(6) evaluated on the grid-only scale', 'v2_sweep + v4_predicted', tol=0.01)
+    # Largest value Eq.(6) can return with every argument normalised into [0,1]:
+    # alpha/(1+e^0) + beta/(1+e^0) + gamma*e^0.
+    check(S, 'bound of Eq.(6) on normalised arguments', 1.75,
+          ALPHA / 2 + BETA / 2 + GAMMA, 'alpha/2 + beta/2 + gamma', 'Section 3.4', tol=0.001)
     check(S, 'cells outside [0,100], grid-only', 10, int(((alt < 0) | (alt > 100)).sum()), F,
           'v2_sweep + v4_predicted', tol=0)
     check(S, 'cells outside [0,100], joint group', 9,
@@ -387,6 +414,16 @@ def main():
               'argmax weighting vector per training cell', 'v2_sweep', tol=0)
         check(S, 'target %s max' % col, hi, tr[col].max(),
               'argmax weighting vector per training cell', 'v2_sweep', tol=0)
+    # Section 5.1 quotes the discrete values the labels take, not merely their range: every
+    # target is a member of the grid, so each component is drawn from that grid's own values.
+    for col, values in (('w1', [4, 6, 8, 10]), ('w2', [0, 2, 4]), ('w3', [0, 2])):
+        check(S, 'target %s takes %s' % (col, values), True,
+              sorted(int(v) for v in tr[col].unique()) == values,
+              'distinct values of the component over the 24 training targets', 'v2_sweep',
+              tol=0)
+        check(S, 'target %s values are in the grid' % col, True,
+              set(tr[col].unique()) <= {float(g[int(col[1]) - 1]) for g in GRID},
+              'every target is one of the five vectors of W', 'v2_sweep', tol=0)
 
     # ----------------------------------------------------------------- Section 4
     # The regression comparison is produced by the retraining repository, not by the campaigns,
@@ -465,6 +502,56 @@ def main():
             return np.stack([np.abs(g['true_w%d' % i] - g['pred_w%d' % i]).values
                              for i in (1, 2, 3)]).mean(axis=0)
 
+        # The aggregate table of Section 4.1 and the dispersion statement it supports.
+        S2 = '4.1 aggregate table'
+        agg = agg.set_index('model')
+        F2 = 'RMSE/MAE over the 20 test configurations, same aggregation as the per-fleet values'
+        for mod, mae, rmse, ratio in (('SVR', 1.439, 1.817, 1.26),
+                                      ('Random Forest', 1.449, 1.678, 1.16),
+                                      ('Decision Tree', 1.471, 1.737, 1.18),
+                                      ('Lasso', 1.511, 1.678, 1.11),
+                                      ('Polynomial', 1.541, 1.821, 1.18)):
+            check(S2, '%s MAE' % mod, mae, agg.MAE[mod], F2, 'MMRS_NN/results', tol=0.001)
+            check(S2, '%s RMSE' % mod, rmse, agg.RMSE[mod], F2, 'MMRS_NN/results', tol=0.001)
+            check(S2, '%s RMSE/MAE' % mod, ratio, agg.RMSE[mod] / agg.MAE[mod], F2,
+                  'MMRS_NN/results', tol=0.005)
+        check(S2, 'SVR has the highest ratio', True,
+              bool((agg.RMSE / agg.MAE).drop('Mean baseline').idxmax() == 'SVR'), F2,
+              'MMRS_NN/results', tol=0)
+        check(S2, 'Lasso beats RF in RMSE by <0.001', True,
+              bool(0 < agg.RMSE['Random Forest'] - agg.RMSE['Lasso'] < 0.001), F2,
+              'MMRS_NN/results', tol=0)
+        # SVR's dispersion is concentrated in w3, which is what the running text claims.
+        w3 = {}
+        for mod in ('SVR', 'Random Forest', 'Decision Tree', 'Lasso', 'Polynomial'):
+            g = prd[prd.model == mod]
+            e = np.abs(g.true_w3 - g.pred_w3).values
+            w3[mod] = (e.mean(), float(np.sqrt((e ** 2).mean())))
+        F3 = 'per-component MAE and RMSE of w3 over the 20 test configurations'
+        check(S2, 'SVR w3 MAE', 0.80, w3['SVR'][0], F3, 'MMRS_NN/results', tol=0.01)
+        check(S2, 'SVR w3 ratio', 1.56, w3['SVR'][1] / w3['SVR'][0], F3, 'MMRS_NN/results',
+              tol=0.01)
+        check(S2, 'SVR has the lowest w3 MAE', True,
+              bool(min(w3, key=lambda m: w3[m][0]) == 'SVR'), F3, 'MMRS_NN/results', tol=0)
+        others = [w3[m][1] / w3[m][0] for m in w3 if m != 'SVR']
+        check(S2, 'other models w3 ratio min', 1.03, min(others), F3, 'MMRS_NN/results', tol=0.01)
+        check(S2, 'other models w3 ratio max', 1.17, max(others), F3, 'MMRS_NN/results', tol=0.01)
+
+        # The constant predictor quoted in the text is the component-wise mean of the training
+        # targets, and it must be the single vector the baseline actually returns.
+        tr_mean = tr[['w1', 'w2', 'w3']].mean()
+        mb = prd[prd.model == 'Mean baseline'][['pred_w1', 'pred_w2', 'pred_w3']].drop_duplicates()
+        F4 = 'component-wise mean of the 24 training targets'
+        check(S2, 'constant predictor is one vector', 1, len(mb),
+              'distinct predictions of the baseline over the 20 test cells', 'MMRS_NN', tol=0)
+        for i, claimed in ((1, 6.67), (2, 2.58), (3, 0.75)):
+            check(S2, 'constant predictor w%d' % i, claimed, tr_mean['w%d' % i], F4,
+                  'v2_sweep train_targets.csv', tol=0.005)
+            check(S2, 'baseline returns w%d' % i, float(tr_mean['w%d' % i]),
+                  float(mb['pred_w%d' % i].iloc[0]),
+                  'the value the baseline predicts equals that mean', 'MMRS_NN', tol=1e-6)
+
+        S = '4 model comparison'
         F = 'Wilcoxon signed-rank on the 20 paired per-configuration mean absolute errors'
         check(S, 'RF vs SVR p', 0.90,
               wilcoxon(per_config('Random Forest'), per_config('SVR')).pvalue, F, 'MMRS_NN',

@@ -182,16 +182,14 @@ def baseline_pairs(u, cell=None, fleet=None):
 def table_baseline(u, path):
     lines = [
         r'\begin{table}[t]',
-        r'\caption{Communication-aware aggregation against the round-robin baseline, paired by'
-        r' object layout (Wilcoxon signed-rank, eight blocks per cell). OWA uses the balanced'
-        r' vector $(4,4,2)$. The advantage of reasoning about link quality, range and pending'
-        r' data appears only when the fleet is large enough to contend for the single surface'
-        r' vehicle.}',
+        r'\caption{OWA with the balanced vector $(4,4,2)$ against the round-robin baseline,'
+        r' paired by object layout (Wilcoxon signed-rank). Layouts won counts those on which'
+        r' OWA attains the higher mission utility.}',
         r'\label{tab:baseline}',
         r'\centering',
         r'\begin{tabular}{rrrrl}',
         r'\toprule',
-        r'Area (m$^2$) & AUVs & Wins & $\Delta U$ (\%) & $p$ \\',
+        r'Area (m$^2$) & AUVs & Layouts won & $\Delta U$ (\%) & $p$ \\',
         r'\midrule',
     ]
     for cell in sorted(u.cell.unique()):

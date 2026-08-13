@@ -157,15 +157,14 @@ def table_fleet_effect(d, path):
     u = pd.concat([utility(g) for _, g in d.groupby(['area', 'auvs'])])
     lines = [
         r'\begin{table}[t]',
-        r'\caption{Paired comparison of the balanced weighting vector against the two'
-        r' maximalist ones, blocked by object layout and pooled across areas'
-        r' (Wilcoxon signed-rank, 24 blocks per test). The weighting vector matters only'
-        r' when the fleet is large enough to contend for the surface vehicle.}',
+        r'\caption{The balanced weighting vector against the two maximalist ones, paired by'
+        r' object layout and pooled across areas (Wilcoxon signed-rank). Layouts won counts'
+        r' those on which $(4,4,2)$ attains the higher mission utility.}',
         r'\label{tab:fleet}',
         r'\centering',
         r'\begin{tabular}{rlrrl}',
         r'\toprule',
-        r'AUVs & Comparison & Wins & $\Delta U$ (\%) & $p$ \\',
+        r'AUVs & Comparison & Layouts won & $\Delta U$ (\%) & $p$ \\',
         r'\midrule',
     ]
     for fleet in sorted(u.auvs.unique()):
